@@ -20,7 +20,9 @@ const Event = () => {
           </h2>
           <div className="cyber-border rounded-2xl p-8 bg-black/60 backdrop-blur-md mx-auto max-w-2xl">
             <p className="text-lg md:text-xl text-gray-300 font-tech mb-6">
-              &gt; Join us for an electrifying cyberpunk hackathon experience! Compete, collaborate, and innovate with the brightest minds in tech. Unleash your creativity and win amazing prizes.
+              &gt; Brain Battle 3.0 is back! ⚡<br></br>
+                   Join us at UIT Burdwan for a thrilling cyberpunk-themed hackathon where innovation meets intensity. Compete, collaborate, and code your way to glory. Exciting prizes, real-world challenges, and a platform to unleash your creativity — all in one epic tech showdown.<br></br>
+                   Hack the future. Win the battle. 🔥
             </p>
           </div>
           {/* Timeline Cards */}
@@ -31,31 +33,31 @@ const Event = () => {
               {
                 title: 'Online Coding Round',
                 desc: 'Test your coding skills in a fast-paced online challenge.',
-                date: 'Feb 25, 2024',
+                date: 'Dec 15, 2025',
                 status: 'executed',
               },
               {
                 title: 'Tech Triathlon',
                 desc: 'A triple-threat event: code, quiz, and debug your way to the top.',
-                date: 'Mar 1, 2024',
+                date: 'Dec 16, 2025',
                 status: 'executed',
               },
               {
                 title: 'Brain Brawl',
                 desc: 'Face off in a battle of wits and logic with other teams.',
-                date: 'Mar 10, 2024',
+                date: 'Dec 17, 2025',
                 status: 'executed',
               },
               {
                 title: 'Final Showdown - Hackathon',
                 desc: 'The ultimate hackathon: build, innovate, and impress the judges.',
-                date: 'Mar 15-17, 2024',
+                date: 'Dec 18, 2025',
                 status: 'running',
               },
               {
                 title: 'Award Ceremony',
                 desc: 'Celebrate the winners and all participants in style.',
-                date: 'Mar 17, 2024',
+                date: 'Dec 19, 2025',
                 status: 'compiling',
               },
             ].map((event, idx, arr) => (

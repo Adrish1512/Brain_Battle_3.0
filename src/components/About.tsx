@@ -118,9 +118,9 @@ const About = () => {
             <div className="max-w-4xl mx-auto space-y-6">
               <div className="cyber-border rounded-2xl p-6 bg-black/50 backdrop-blur-sm">
                 <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-tech">
-                  &gt; Brain Battle 3.0 is the ultimate cyberpunk hackathon experience hosted by{' '}
+                  &gt; Brain Battle 3.0 is the ultimate hackathon experience hosted by{' '}
                   <span className="text-cyber-cyan font-bold animate-pulse">CODING JUNCTION</span>, 
-                  where digital warriors converge to hack reality and push the boundaries of what's possible in the matrix.
+                  where digital innovators converge to tackle real-world challenges, unleash their creativity, and push the boundaries of what’s possible through code and collaboration.
                 </p>
               </div>
               <div className="cyber-border rounded-2xl p-6 bg-black/30 backdrop-blur-sm">
@@ -182,7 +182,7 @@ const About = () => {
                   &gt; READY TO JACK IN?
                 </h3>
                 <p className="text-lg text-gray-300 font-tech">
-                  &gt; Registration protocols are now active! Secure your access to this epic cyber adventure 
+                  &gt; Registration protocols are now active! Secure your access to this epic Tech adventure 
                   and become part of the digital revolution. Limited neural interfaces available.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -200,7 +200,7 @@ const About = () => {
                     </span>
                   </motion.a>
                   <div className="text-sm text-gray-400 font-tech">
-                    [EARLY_ACCESS_EXPIRES: MAR_01]
+                    [EARLY_ACCESS_EXPIRES: DEC_01]
                   </div>
                 </div>
               </div>
