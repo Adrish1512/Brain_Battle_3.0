@@ -189,7 +189,7 @@ const Team = () => {
             <div className="cyber-border rounded-2xl p-6 max-w-3xl mx-auto bg-black/50 backdrop-blur-sm">
               <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-tech">
                 &gt; Meet the elite operatives behind Brain Battle 3.0. Our diverse team of digital architects, 
-                code warriors, and system administrators work in perfect synchronization to create an unforgettable cyber experience.
+                code warriors, and system administrators work in perfect synchronization to create an unforgettable Tech experience.
               </p>
             </div>
           </motion.div>
@@ -308,7 +308,7 @@ const Team = () => {
                   &gt; WANT TO JOIN THE RESISTANCE?
                 </h3>
                 <p className="text-lg text-gray-300 max-w-2xl mx-auto font-tech">
-                  &gt; We're always recruiting passionate individuals to help organize epic cyber events. 
+                  &gt; We're always recruiting passionate individuals to help organize epic events. 
                   Join Coding Junction and become part of the digital revolution that's shaping the future of tech.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

@@ -18,10 +18,10 @@ const Footer = () => {
   ];
 
   const contactInfo = [
-    { icon: MapPin, text: 'Tech Campus, Innovation District', status: 'LOCATED' },
-    { icon: Calendar, text: 'March 15-17, 2024', status: 'SCHEDULED' },
+    { icon: MapPin, text: 'UIT,BU Campus, Burdwan', status: 'LOCATED' },
+    { icon: Calendar, text: 'December 15-18, 2025', status: 'SCHEDULED' },
     { icon: Phone, text: '+1 (555) 123-4567', status: 'ACTIVE' },
-    { icon: Mail, text: 'hello@codingjunction.edu', status: 'ONLINE' },
+    { icon: Mail, text: 'codingjunction@gmail.com', status: 'ONLINE' },
   ];
 
   const scrollToSection = (href: string) => {
@@ -65,7 +65,7 @@ const Footer = () => {
             <div className="cyber-border rounded-lg p-4 bg-black/30 backdrop-blur-sm">
               <p className="text-gray-300 text-sm leading-relaxed font-tech">
                 &gt; Empowering the next generation of digital warriors through innovative hackathons, 
-                neural workshops, and cyber community building. Join us in hacking the future of technology.
+                neural workshops, and tech community building. Join us in hacking the future of technology.
               </p>
             </div>
             <div className="flex space-x-4">
@@ -162,7 +162,7 @@ const Footer = () => {
             </h3>
             <div className="cyber-border rounded-lg p-4 bg-black/30 backdrop-blur-sm">
               <p className="text-gray-400 text-sm font-tech mb-4">
-                &gt; Subscribe to receive the latest updates about Brain Battle and upcoming cyber operations.
+                &gt; Subscribe to receive the latest updates about Brain Battle and upcoming exciting events.
               </p>
               <div className="space-y-3">
                 <input
