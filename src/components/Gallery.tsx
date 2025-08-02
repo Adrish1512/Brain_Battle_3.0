@@ -105,11 +105,11 @@ const Gallery = () => {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, scale: 0.8, rotateY: -15 },
+    hidden: { opacity: 1, scale: 1, rotateY: 0 },
     visible: { opacity: 1, scale: 1, rotateY: 0 },
   };
 
-  return (
+    return (
     <section id="gallery" className="py-10 sm:py-16 md:py-20 relative overflow-hidden min-h-screen">
       {/* Cyberpunk Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-900/10 to-black">
@@ -117,29 +117,10 @@ const Gallery = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(6,182,212,0.1),transparent_70%)]" />
       </div>
 
-      {/* Circuit Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-          <defs>
-            <pattern id="circuit" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
-              <path d="M 0 5 L 10 5 M 5 0 L 5 10" stroke="#06B6D4" strokeWidth="0.5" fill="none"/>
-              <circle cx="5" cy="5" r="1" fill="#06B6D4"/>
-            </pattern>
-          </defs>
-          <rect width="100%" height="100%" fill="url(#circuit)"/>
-        </svg>
-      </div>
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={containerVariants}
-          className="space-y-12"
-        >
+        <div className="space-y-12">
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center space-y-4 sm:space-y-6">
+          <div className="text-center space-y-4 sm:space-y-6">
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-orbitron font-black glitch-text" data-text="EVENT ARCHIVES">
               EVENT ARCHIVES
             </h2>
@@ -149,23 +130,13 @@ const Gallery = () => {
                 Witness the innovation, collaboration, and digital warfare that defines our cyber community.
               </p>
             </div>
-          </motion.div>
+          </div>
 
           {/* Gallery Grid */}
-          <motion.div
-            variants={containerVariants}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {images.map((image, index) => (
-              <motion.div
+              <div
                 key={index}
-                ref={(el) => (cardRefs.current[index] = el)}
-                variants={itemVariants}
-                whileHover={{ 
-                  scale: 1.05,
-                  rotateY: 5,
-                  z: 50 
-                }}
                 className="group relative cursor-pointer"
                 onClick={() => setSelectedImage(image.src)}
               >
@@ -201,15 +172,12 @@ const Gallery = () => {
                   {/* Hover Border Effect */}
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-cyber-cyan to-neon-purple rounded-2xl opacity-0 group-hover:opacity-50 group-active:opacity-50 transition-opacity duration-300 -z-10 blur" />
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
 
           {/* Call to Action */}
-          <motion.div
-            variants={itemVariants}
-            className="text-center pt-8 sm:pt-12"
-          >
+          <div className="text-center pt-8 sm:pt-12">
             <div className="cyber-border rounded-2xl p-4 sm:p-8 max-w-2xl mx-auto bg-black/50 backdrop-blur-sm">
               <h3 className="text-xl sm:text-2xl font-orbitron font-bold text-white mb-4">
                 &gt; JOIN THE NEXT CHAPTER
@@ -218,22 +186,20 @@ const Gallery = () => {
                 &gt; Create new memories, forge digital alliances, and showcase your skills at Brain Battle 3.0. 
                 Your code could be featured in our next data archive!
               </p>
-              <motion.a
+              <a
                 href="https://forms.gle/example"
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-1 rounded-full font-orbitron font-bold group"
               >
                 <span className="bg-black px-4 sm:px-6 py-2 sm:py-3 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-2 text-sm sm:text-base">
                   &gt; ENTER_THE_MATRIX
                   <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
                 </span>
-              </motion.a>
+              </a>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
       {/* Image Modal */}
