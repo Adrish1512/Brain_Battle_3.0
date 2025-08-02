@@ -22,7 +22,7 @@ const About = () => {
   const features = [
     {
       icon: Clock,
-      title: '48 HRS CODING',
+      title: '8 HRS CODING',
       description: 'Non-stop development marathon to hack reality',
       color: 'text-cyber-cyan',
       bgColor: 'bg-cyber-cyan/10',
