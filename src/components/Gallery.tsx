@@ -110,7 +110,7 @@ const Gallery = () => {
   };
 
   return (
-    <section id="gallery" className="py-20 relative overflow-hidden">
+    <section id="gallery" className="py-10 sm:py-16 md:py-20 relative overflow-hidden min-h-screen">
       {/* Cyberpunk Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-purple-900/10 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(236,72,153,0.1),transparent_70%)]" />
@@ -139,12 +139,12 @@ const Gallery = () => {
           className="space-y-12"
         >
           {/* Header */}
-          <motion.div variants={itemVariants} className="text-center space-y-6">
-            <h2 className="text-4xl md:text-6xl font-orbitron font-black glitch-text" data-text="EVENT ARCHIVES">
+          <motion.div variants={itemVariants} className="text-center space-y-4 sm:space-y-6">
+            <h2 className="text-3xl sm:text-4xl md:text-6xl font-orbitron font-black glitch-text" data-text="EVENT ARCHIVES">
               EVENT ARCHIVES
             </h2>
-            <div className="cyber-border rounded-2xl p-6 max-w-3xl mx-auto bg-black/50 backdrop-blur-sm">
-              <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-tech">
+            <div className="cyber-border rounded-2xl p-4 sm:p-6 max-w-3xl mx-auto bg-black/50 backdrop-blur-sm">
+              <p className="text-sm sm:text-lg md:text-xl text-gray-300 leading-relaxed font-tech">
                 &gt; Access archived data from previous Brain Battle operations. 
                 Witness the innovation, collaboration, and digital warfare that defines our cyber community.
               </p>
@@ -154,7 +154,7 @@ const Gallery = () => {
           {/* Gallery Grid */}
           <motion.div
             variants={containerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
           >
             {images.map((image, index) => (
               <motion.div
@@ -173,20 +173,20 @@ const Gallery = () => {
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110 group-active:scale-105"
                   />
                   
                   {/* Cyber Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-6">
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className={`text-sm font-tech ${getStatusColor(image.status)} animate-pulse`}>
+                          <span className={`text-xs sm:text-sm font-tech ${getStatusColor(image.status)} animate-pulse`}>
                             [{image.status}]
                           </span>
-                          <div className="flex items-center gap-2 text-cyber-cyan">
-                            <Eye className="h-4 w-4" />
-                            <span className="text-sm font-tech">ACCESS</span>
+                          <div className="flex items-center gap-1 sm:gap-2 text-cyber-cyan">
+                            <Eye className="h-3 w-3 sm:h-4 sm:w-4" />
+                            <span className="text-xs sm:text-sm font-tech">ACCESS</span>
                           </div>
                         </div>
                       </div>
@@ -194,12 +194,12 @@ const Gallery = () => {
                   </div>
                   
                   {/* Scan Line Effect */}
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300">
                     <div className="absolute top-0 left-0 right-0 h-0.5 bg-cyber-cyan animate-scan-line"></div>
                   </div>
                   
                   {/* Hover Border Effect */}
-                  <div className="absolute -inset-0.5 bg-gradient-to-r from-cyber-cyan to-neon-purple rounded-2xl opacity-0 group-hover:opacity-50 transition-opacity duration-300 -z-10 blur" />
+                  <div className="absolute -inset-0.5 bg-gradient-to-r from-cyber-cyan to-neon-purple rounded-2xl opacity-0 group-hover:opacity-50 group-active:opacity-50 transition-opacity duration-300 -z-10 blur" />
                 </div>
               </motion.div>
             ))}
@@ -208,13 +208,13 @@ const Gallery = () => {
           {/* Call to Action */}
           <motion.div
             variants={itemVariants}
-            className="text-center pt-12"
+            className="text-center pt-8 sm:pt-12"
           >
-            <div className="cyber-border rounded-2xl p-8 max-w-2xl mx-auto bg-black/50 backdrop-blur-sm">
-              <h3 className="text-2xl font-orbitron font-bold text-white mb-4">
+            <div className="cyber-border rounded-2xl p-4 sm:p-8 max-w-2xl mx-auto bg-black/50 backdrop-blur-sm">
+              <h3 className="text-xl sm:text-2xl font-orbitron font-bold text-white mb-4">
                 &gt; JOIN THE NEXT CHAPTER
               </h3>
-              <p className="text-gray-300 mb-6 font-tech">
+              <p className="text-sm sm:text-base text-gray-300 mb-6 font-tech">
                 &gt; Create new memories, forge digital alliances, and showcase your skills at Brain Battle 3.0. 
                 Your code could be featured in our next data archive!
               </p>
@@ -226,9 +226,9 @@ const Gallery = () => {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-1 rounded-full font-orbitron font-bold group"
               >
-                <span className="bg-black px-6 py-3 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-2">
+                <span className="bg-black px-4 sm:px-6 py-2 sm:py-3 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-2 text-sm sm:text-base">
                   &gt; ENTER_THE_MATRIX
-                  <ExternalLink className="h-4 w-4" />
+                  <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
                 </span>
               </motion.a>
             </div>
