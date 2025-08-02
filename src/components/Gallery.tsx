@@ -25,55 +25,55 @@ const Gallery = () => {
       src: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop',
       alt: 'Team collaboration during hackathon',
       caption: 'BRAIN_BATTLE_2.0 >> TEAM_SYNC',
-      status: 'ARCHIVED',
+      status: 'BRAIN BATTLE 2.0',
     },
     {
       src: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&h=600&fit=crop',
       alt: 'Coding session',
       caption: 'NEURAL_CODING >> ACTIVE',
-      status: 'PROCESSING',
+      status: 'BRAIN BATTLE 2.0',
     },
     {
       src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop',
       alt: 'Team working together',
       caption: 'COLLECTIVE_INTELLIGENCE >> ONLINE',
-      status: 'CONNECTED',
+      status: 'BRAIN BATTLE 1',
     },
     {
       src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop',
       alt: 'Presentation time',
       caption: 'DEMO_PROTOCOL >> EXECUTED',
-      status: 'COMPLETE',
+      status: 'BRAIN BATTLE 2.0',
     },
     {
       src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop',
       alt: 'Developer workspace',
       caption: 'WORKSTATION_MATRIX >> READY',
-      status: 'STANDBY',
+      status: 'BRAIN BATTLE 2.0',
     },
     {
       src: 'https://images.unsplash.com/photo-1515378791036-0648a814c963?w=800&h=600&fit=crop',
       alt: 'Tech event',
       caption: 'INITIALIZATION >> SUCCESS',
-      status: 'LAUNCHED',
+      status: 'BRAIN BATTLE 2.0',
     },
     {
       src: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop',
       alt: 'Networking session',
       caption: 'NETWORK_PROTOCOL >> ACTIVE',
-      status: 'SYNCING',
+      status: 'BRAIN BATTLE 1',
     },
     {
       src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop',
       alt: 'Award ceremony',
       caption: 'VICTORY_SEQUENCE >> COMPLETE',
-      status: 'ACHIEVED',
+      status: 'BRAIN BATTLE 2.0',
     },
     {
       src: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=800&h=600&fit=crop',
       alt: 'Workshop session',
       caption: 'SKILL_UPGRADE >> INSTALLING',
-      status: 'UPDATING',
+      status: 'BRAIN BATTLE 2.0',
     },
   ];
 
@@ -88,6 +88,8 @@ const Gallery = () => {
       SYNCING: 'text-cyber-cyan',
       ACHIEVED: 'text-neon-green',
       UPDATING: 'text-neon-purple',
+      'BRAIN BATTLE 1': 'text-neon-green',
+      'BRAIN BATTLE 2.0': 'text-cyber-cyan',
     };
     return colors[status as keyof typeof colors] || 'text-white';
   };
@@ -178,9 +180,6 @@ const Gallery = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <div className="space-y-2">
-                        <h3 className="text-white font-orbitron font-bold text-lg">
-                          {image.caption}
-                        </h3>
                         <div className="flex items-center justify-between">
                           <span className={`text-sm font-tech ${getStatusColor(image.status)} animate-pulse`}>
                             [{image.status}]

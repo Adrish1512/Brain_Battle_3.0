@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Users, Trophy, ExternalLink, Cpu, Zap } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
@@ -6,6 +6,12 @@ import VanillaTilt from 'vanilla-tilt';
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLAnchorElement>(null);
+  const [countdown, setCountdown] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0
+  });
 
   useEffect(() => {
     if (heroRef.current) {
@@ -23,6 +29,35 @@ const Hero = () => {
         'max-glare': 0.5,
       });
     }
+  }, []);
+
+  // Countdown timer effect
+  useEffect(() => {
+    const targetDate = new Date('December 15, 2025 00:00:00').getTime();
+
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        setCountdown({ days, hours, minutes, seconds });
+      } else {
+        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    // Update countdown immediately
+    updateCountdown();
+    
+    // Update countdown every second
+    const timer = setInterval(updateCountdown, 1000);
+
+    return () => clearInterval(timer);
   }, []);
 
   const floatingAnimation = {
@@ -213,10 +248,10 @@ const Hero = () => {
               </h3>
               <div className="grid grid-cols-4 gap-8 text-center">
                 {[
-                  { value: '42', label: 'DAYS' },
-                  { value: '18', label: 'HRS' },
-                  { value: '23', label: 'MIN' },
-                  { value: '45', label: 'SEC' },
+                  { value: countdown.days.toString().padStart(2, '0'), label: 'DAYS' },
+                  { value: countdown.hours.toString().padStart(2, '0'), label: 'HRS' },
+                  { value: countdown.minutes.toString().padStart(2, '0'), label: 'MIN' },
+                  { value: countdown.seconds.toString().padStart(2, '0'), label: 'SEC' },
                 ].map((unit) => (
                   <div key={unit.label} className="space-y-4">
                     <div className="text-5xl md:text-7xl font-orbitron font-black text-neon-cyan animate-neon-pulse">
