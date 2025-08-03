@@ -37,12 +37,6 @@ const Event = () => {
                 status: 'executed',
               },
               {
-                title: 'Tech Triathlon',
-                desc: 'A triple-threat event: code, quiz, and debug your way to the top.',
-                date: 'Dec 16, 2025',
-                status: 'executed',
-              },
-              {
                 title: 'Brain Brawl',
                 desc: 'Face off in a battle of wits and logic with other teams.',
                 date: 'Dec 17, 2025',
