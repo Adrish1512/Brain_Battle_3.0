@@ -1,23 +1,36 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Code, Users, Trophy, Clock, Target, Zap, Cpu, Shield, Wifi } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
 
 const About = () => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    cardRefs.current.forEach((card) => {
-      if (card) {
-        VanillaTilt.init(card, {
-          max: 15,
-          speed: 400,
-          glare: true,
-          'max-glare': 0.2,
-        });
-      }
-    });
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  useEffect(() => {
+    // Only apply VanillaTilt on desktop
+    if (!isMobile) {
+      cardRefs.current.forEach((card) => {
+        if (card) {
+          VanillaTilt.init(card, {
+            max: 15,
+            speed: 400,
+            glare: true,
+            'max-glare': 0.2,
+          });
+        }
+      });
+    }
+  }, [isMobile]);
 
   const features = [
     {
@@ -75,38 +88,44 @@ const About = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: isMobile ? 0.05 : 0.1, // Faster on mobile
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50, rotateX: -15 },
-    visible: { opacity: 1, y: 0, rotateX: 0 },
+    hidden: { opacity: 0, y: isMobile ? 20 : 30 }, // Smaller movement on mobile
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
     <section id="about" className="py-20 relative overflow-hidden">
-      {/* Cyberpunk Background */}
+      {/* Simplified Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(139,92,246,0.1),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(6,182,212,0.1),transparent_70%)]" />
+        {!isMobile && (
+          <>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_40%,rgba(139,92,246,0.05),transparent_70%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(6,182,212,0.05),transparent_70%)]" />
+          </>
+        )}
       </div>
 
-      {/* Data Grid Background */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="grid grid-cols-12 h-full">
-          {[...Array(12)].map((_, i) => (
-            <div key={i} className="border-r border-cyber-cyan/20" />
-          ))}
+      {/* Simplified Data Grid Background - only on desktop */}
+      {!isMobile && (
+        <div className="absolute inset-0 opacity-3">
+          <div className="grid grid-cols-4 h-full">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="border-r border-cyber-cyan/10" />
+            ))}
+          </div>
         </div>
-      </div>
+      )}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: isMobile ? 0.1 : 0.3 }} // Lower threshold on mobile
           variants={containerVariants}
           className="text-center space-y-12"
         >
@@ -144,17 +163,18 @@ const About = () => {
                 ref={(el) => (cardRefs.current[index] = el)}
                 variants={itemVariants}
                 whileHover={{ 
-                  scale: 1.05,
-                  rotateY: 5,
-                  z: 50 
+                  scale: isMobile ? 1.01 : 1.02, // Minimal scale on mobile
+                  y: isMobile ? -2 : -5, // Smaller movement on mobile
                 }}
                 className="group relative"
               >
-                <div className={`cyber-border ${feature.bgColor} backdrop-blur-sm border ${feature.borderColor} rounded-2xl p-6 h-full transition-all duration-300 group-hover:shadow-neon-cyan`}>
+                <div className={`cyber-border ${feature.bgColor} backdrop-blur-sm border ${feature.borderColor} rounded-2xl p-6 h-full transition-all duration-300 ${!isMobile ? 'group-hover:shadow-neon-cyan' : ''}`}>
                   <div className="space-y-4">
-                    <div className={`${feature.color} ${feature.bgColor} w-12 h-12 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 relative`}>
+                    <div className={`${feature.color} ${feature.bgColor} w-12 h-12 rounded-xl flex items-center justify-center ${!isMobile ? 'group-hover:scale-110' : ''} transition-transform duration-300 relative`}>
                       <feature.icon className="h-6 w-6" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                      {!isMobile && (
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                      )}
                     </div>
                     <h3 className="text-xl font-orbitron font-bold text-white group-hover:text-cyber-cyan transition-colors duration-300">
                       {feature.title}
@@ -164,8 +184,10 @@ const About = () => {
                     </p>
                   </div>
                   
-                  {/* Cyber Glow Effect */}
-                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${feature.color.replace('text-', 'from-')} to-transparent rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 -z-10 blur`} />
+                  {/* Cyber Glow Effect - only on desktop */}
+                  {!isMobile && (
+                    <div className={`absolute -inset-0.5 bg-gradient-to-r ${feature.color.replace('text-', 'from-')} to-transparent rounded-2xl opacity-0 group-hover:opacity-30 transition-opacity duration-300 -z-10 blur`} />
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -205,11 +227,13 @@ const About = () => {
                 </div>
               </div>
               
-              {/* Background Animation */}
-              <div className="absolute inset-0 opacity-10">
-                <Wifi className="absolute top-4 right-4 h-8 w-8 text-cyber-cyan animate-pulse" />
-                <Cpu className="absolute bottom-4 left-4 h-6 w-6 text-neon-purple animate-spin" style={{ animationDuration: '8s' }} />
-              </div>
+              {/* Background Animation - only on desktop */}
+              {!isMobile && (
+                <div className="absolute inset-0 opacity-10">
+                  <Wifi className="absolute top-4 right-4 h-8 w-8 text-cyber-cyan animate-pulse" />
+                  <Cpu className="absolute bottom-4 left-4 h-6 w-6 text-neon-purple animate-spin" style={{ animationDuration: '8s' }} />
+                </div>
+              )}
             </div>
           </motion.div>
         </motion.div>
