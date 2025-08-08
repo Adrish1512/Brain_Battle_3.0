@@ -7,6 +7,7 @@
     font-family: 'Orbitron', monospace;
     background: #000;
     overflow-x: hidden;
+    scroll-padding-top: 64px; /* Account for fixed navbar height */
   }
 }
 
