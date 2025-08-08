@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
 import Logo from '../../Logo.png';
 
@@ -130,13 +129,46 @@ const Navbar = () => {
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="md:hidden relative z-50">
               <motion.button
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-white hover:text-cyber-cyan transition-colors duration-300 p-2 rounded-lg cyber-border"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  console.log('Hamburger clicked, current state:', isOpen);
+                  setIsOpen(!isOpen);
+                }}
+                className="relative w-10 h-10 flex flex-col justify-center items-center cursor-pointer group p-2 rounded-lg hover:bg-cyber-cyan/10 transition-colors duration-300 z-50"
               >
-                {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {/* Traditional 3-line Hamburger */}
+                <div className="flex flex-col justify-center items-center w-6 h-6 space-y-1.5 relative">
+                  <motion.span
+                    animate={isOpen ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="w-6 h-0.5 bg-cyber-cyan rounded-full origin-center"
+                  />
+                  <motion.span
+                    animate={isOpen ? { opacity: 0, scale: 0 } : { opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="w-6 h-0.5 bg-cyber-cyan rounded-full"
+                  />
+                  <motion.span
+                    animate={isOpen ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    className="w-6 h-0.5 bg-cyber-cyan rounded-full origin-center"
+                  />
+                </div>
+                
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-cyber-cyan/20 rounded-lg blur-md scale-0 group-hover:scale-100 transition-transform duration-300 hamburger-glow" />
+                
+                {/* Hover indicator */}
+                <motion.div
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: isOpen ? 1 : 0, scale: isOpen ? 1 : 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="absolute -top-1 -right-1 w-2 h-2 bg-neon-green rounded-full"
+                />
               </motion.button>
             </div>
           </div>
@@ -147,25 +179,78 @@ const Navbar = () => {
           {isOpen && (
             <motion.div
               ref={mobileMenuRef}
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-black/90 backdrop-blur-md border-b border-cyber-cyan/30"
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="md:hidden absolute top-full left-0 right-0 bg-gradient-to-b from-black/95 via-black/90 to-black/95 backdrop-blur-xl border-b border-cyber-cyan/50 shadow-2xl z-40"
             >
-              <div className="px-2 pt-2 pb-3 space-y-1">
+              {/* Animated background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyber-cyan/5 via-neon-purple/5 to-neon-pink/5" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.1),transparent_70%)]" />
+              
+              {/* Data stream effect */}
+              <div className="absolute inset-0 overflow-hidden">
+                {[...Array(3)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute h-full w-px bg-gradient-to-b from-transparent via-cyber-cyan to-transparent opacity-30"
+                    style={{
+                      left: `${20 + i * 30}%`,
+                      animationDelay: `${i * 0.5}s`,
+                      animationDuration: '3s',
+                      animationName: 'data-stream',
+                      animationIterationCount: 'infinite',
+                      animationTimingFunction: 'linear'
+                    }}
+                  />
+                ))}
+              </div>
+              
+              <div className="relative px-4 py-6 space-y-2">
                 {navItems.map((item, index) => (
                   <motion.button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    whileHover={{ x: 10, textShadow: '0 0 10px #06B6D4' }}
-                    initial={{ opacity: 0, x: -20 }}
+                    whileHover={{ 
+                      x: 8, 
+                      scale: 1.02,
+                      textShadow: '0 0 15px #06B6D4',
+                      boxShadow: '0 0 20px rgba(6,182,212,0.3)'
+                    }}
+                    whileTap={{ scale: 0.98 }}
+                    initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="text-white hover:text-cyber-cyan block px-3 py-2 text-base font-tech font-medium w-full text-left transition-all duration-300 rounded-lg cyber-border"
+                    transition={{ 
+                      delay: index * 0.1,
+                      duration: 0.4,
+                      ease: "easeOut"
+                    }}
+                    className="group relative text-white hover:text-cyber-cyan block px-4 py-3 text-lg font-tech font-medium w-full text-left transition-all duration-300 rounded-xl bg-black/30 hover:bg-black/50 border border-transparent hover:border-cyber-cyan/30 overflow-hidden cyber-pulse"
                   >
-                    {item.name}
+                    {/* Hover effect background */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-cyber-cyan/10 to-neon-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    {/* Animated underline */}
+                    <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-cyber-cyan to-neon-purple transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    
+                    {/* Text with glow effect */}
+                    <span className="relative z-10 flex items-center">
+                      <span className="mr-3 text-cyber-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300">{'>'}</span>
+                      {item.name}
+                    </span>
                   </motion.button>
                 ))}
+                
+                {/* Decorative elements */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.5 }}
+                  className="flex justify-center pt-4"
+                >
+                  <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-cyber-cyan to-transparent" />
+                </motion.div>
               </div>
             </motion.div>
           )}
