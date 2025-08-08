@@ -1,23 +1,36 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Code, Users, Megaphone, Briefcase, Shield, Cpu, Instagram } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
 
 const Team = () => {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    cardRefs.current.forEach((card) => {
-      if (card) {
-        VanillaTilt.init(card, {
-          max: 20,
-          speed: 400,
-          glare: true,
-          'max-glare': 0.3,
-        });
-      }
-    });
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  useEffect(() => {
+    // Only apply VanillaTilt on desktop
+    if (!isMobile) {
+      cardRefs.current.forEach((card) => {
+        if (card) {
+          VanillaTilt.init(card, {
+            max: 20,
+            speed: 400,
+            glare: true,
+            'max-glare': 0.3,
+          });
+        }
+      });
+    }
+  }, [isMobile]);
 
   const teamMembers = [
     {
@@ -209,43 +222,49 @@ const Team = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: isMobile ? 0.05 : 0.1, // Faster on mobile
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50, rotateX: -15 },
-    visible: { opacity: 1, y: 0, rotateX: 0 },
+    hidden: { opacity: 0, y: isMobile ? 20 : 30 }, // Smaller movement on mobile
+    visible: { opacity: 1, y: 0 },
   };
 
   return (
     <section id="team" className="py-20 relative overflow-hidden">
-      {/* Cyberpunk Background */}
+      {/* Simplified Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.1),transparent_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(6,182,212,0.1),transparent_70%)]" />
+        {!isMobile && (
+          <>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(139,92,246,0.05),transparent_70%)]" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(6,182,212,0.05),transparent_70%)]" />
+          </>
+        )}
       </div>
 
-      {/* Digital Grid */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="grid grid-cols-8 h-full">
-          {[...Array(8)].map((_, i) => (
-            <div key={i} className="border-r border-cyber-cyan/20" />
-          ))}
+      {/* Simplified Digital Grid - only on desktop */}
+      {!isMobile && (
+        <div className="absolute inset-0 opacity-3">
+          <div className="grid grid-cols-4 h-full">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="border-r border-cyber-cyan/10" />
+            ))}
+          </div>
+          <div className="absolute inset-0 grid grid-rows-3">
+            {[...Array(3)].map((_, i) => (
+              <div key={i} className="border-b border-cyber-cyan/10" />
+            ))}
+          </div>
         </div>
-        <div className="absolute inset-0 grid grid-rows-6">
-          {[...Array(6)].map((_, i) => (
-            <div key={i} className="border-b border-cyber-cyan/20" />
-          ))}
-        </div>
-      </div>
+      )}
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: isMobile ? 0.1 : 0.3 }} // Lower threshold on mobile
           variants={containerVariants}
           className="space-y-16"
         >
@@ -265,7 +284,7 @@ const Team = () => {
           {/* Team Grid */}
           <motion.div
             variants={containerVariants}
-            className="grid grid-cols-2 lg:grid-cols-5 gap-4"
+            className={`grid ${isMobile ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-2 lg:grid-cols-5'} gap-4`}
           >
             {teamMembers.map((member, index) => (
               <motion.div
@@ -273,13 +292,12 @@ const Team = () => {
                 ref={(el) => (cardRefs.current[index] = el)}
                 variants={itemVariants}
                 whileHover={{ 
-                  scale: 1.05,
-                  rotateY: 5,
-                  z: 50 
+                  scale: isMobile ? 1.01 : 1.02, // Minimal scale on mobile
+                  y: isMobile ? -1 : -2, // Smaller movement on mobile
                 }}
                 className="group relative"
               >
-                <div className="cyber-border bg-black/50 backdrop-blur-sm rounded-2xl p-3 h-full transition-all duration-300 group-hover:shadow-cyber-glow">
+                <div className="cyber-border bg-black/50 backdrop-blur-sm rounded-2xl p-3 h-full transition-all duration-300 ${!isMobile ? 'group-hover:shadow-cyber-glow' : ''}">
                   <div className="space-y-3">
                     {/* Profile Section */}
                     <div className="relative">
@@ -293,9 +311,11 @@ const Team = () => {
                       </div>
                       
                       {/* Status Indicator */}
-                      <div className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-gradient-to-r ${member.color} p-1 rounded-full group-hover:scale-110 transition-transform duration-300 relative`}>
+                      <div className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-gradient-to-r ${member.color} p-1 rounded-full ${!isMobile ? 'group-hover:scale-110' : ''} transition-transform duration-300 relative`}>
                         <member.icon className="h-3 w-3 text-white" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                        {!isMobile && (
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
+                        )}
                       </div>
                     </div>
 
@@ -358,8 +378,10 @@ const Team = () => {
                     </div>
                   </div>
                   
-                  {/* Cyber Glow Effect */}
-                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${member.color} rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 -z-10 blur`} />
+                  {/* Cyber Glow Effect - only on desktop */}
+                  {!isMobile && (
+                    <div className={`absolute -inset-0.5 bg-gradient-to-r ${member.color} rounded-2xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 -z-10 blur`} />
+                  )}
                 </div>
               </motion.div>
             ))}
@@ -397,11 +419,13 @@ const Team = () => {
                 </div>
               </div>
               
-              {/* Background Effects */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-4 right-4 w-8 h-8 border border-cyber-cyan animate-spin" style={{ animationDuration: '8s' }} />
-                <div className="absolute bottom-4 left-4 w-6 h-6 bg-neon-purple animate-pulse" />
-              </div>
+              {/* Background Effects - only on desktop */}
+              {!isMobile && (
+                <div className="absolute inset-0 opacity-10">
+                  <div className="absolute top-4 right-4 w-8 h-8 border border-cyber-cyan animate-spin" style={{ animationDuration: '8s' }} />
+                  <div className="absolute bottom-4 left-4 w-6 h-6 bg-neon-purple animate-pulse" />
+                </div>
+              )}
             </div>
           </motion.div>
         </motion.div>

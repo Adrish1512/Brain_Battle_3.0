@@ -2,8 +2,8 @@ import { useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
-import Gallery from './components/Gallery';
 import Team from './components/Team';
+import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 import Event from './components/Event';
 
@@ -27,10 +27,12 @@ function App() {
         <Hero />
         <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
           <Event />
-          <About />
-          <Gallery />
-          <Team />
         </Suspense>
+        <About />
+        <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+          <Gallery />
+        </Suspense>
+        <Team />
       </main>
       <Suspense fallback={null}>
         <Footer />
