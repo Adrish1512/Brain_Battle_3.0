@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,7 +10,7 @@ import Event from './components/Event';
 function App() {
   useEffect(() => {
     // Update document title
-    document.title = 'Brain Battle 3.0 - Hack the Future with Code';
+    document.title = 'Brain Battle 3.0';
     
     // Add smooth scrolling behavior
     document.documentElement.style.scrollBehavior = 'smooth';
@@ -25,12 +25,16 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <Event />
-        <About />
-        <Gallery />
-        <Team />
+        <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+          <Event />
+          <About />
+          <Gallery />
+          <Team />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }
