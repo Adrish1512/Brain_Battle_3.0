@@ -73,8 +73,8 @@ const Team = () => {
     },
     {
       name: 'JKL',
-      role: 'Information Technology',
-      department: 'Digital Media',
+      role: 'EVENT_MANAGER',
+      department: 'Information Technology',
       image: 'https://images/',
       icon: Megaphone,
       color: 'from-neon-pink to-red-500',
@@ -124,13 +124,13 @@ const Team = () => {
     },
     {
       name: 'STU',
-      role: 'PROTOCOL_MANAGER',
+      role: 'SYSTEM_ANALYST', // changed
       department: 'Information Technology',
       image: 'https://images/',
-      icon: Shield,
-      color: 'from-indigo-400 to-purple-500',
-      status: 'COORDINATING',
-      level: 'LVL_87',
+      icon: Cpu, // changed icon
+      color: 'from-cyber-cyan to-blue-500', // changed color
+      status: 'MONITORING', // changed status
+      level: 'LVL_91', // changed
       social: {
         github: '#',
         linkedin: '#',
@@ -141,13 +141,13 @@ const Team = () => {
     },
     {
       name: 'VWX',
-      role: 'PROTOCOL_MANAGER',
+      role: 'NETWORK_ENGINEER', // changed
       department: 'Information Technology',
       image: 'https://images/',
-      icon: Shield,
-      color: 'from-indigo-400 to-purple-500',
-      status: 'COORDINATING',
-      level: 'LVL_87',
+      icon: Users, // changed icon
+      color: 'from-neon-green to-teal-500', // changed color
+      status: 'CONNECTED', // changed status
+      level: 'LVL_92', // changed
       social: {
         github: '#',
         linkedin: '#',
@@ -158,13 +158,13 @@ const Team = () => {
     },
     {
       name: 'XYZ',
-      role: 'PROTOCOL_MANAGER',
+      role: 'EVENT_COORDINATOR', // changed
       department: 'Information Technology',
       image: 'https://images/',
-      icon: Shield,
-      color: 'from-indigo-400 to-purple-500',
-      status: 'COORDINATING',
-      level: 'LVL_87',
+      icon: Megaphone, // changed icon
+      color: 'from-neon-pink to-red-500', // changed color
+      status: 'TRANSMITTING', // changed status
+      level: 'LVL_93', // changed
       social: {
         github: '#',
         linkedin: '#',
@@ -175,13 +175,13 @@ const Team = () => {
     },
     {
       name: 'Demo Name',
-      role: 'PROTOCOL_MANAGER',
+      role: 'SOFTWARE_DEVELOPER', // changed
       department: 'Information Technology',
       image: 'https://images/',
-      icon: Shield,
-      color: 'from-indigo-400 to-purple-500',
-      status: 'COORDINATING',
-      level: 'LVL_87',
+      icon: Code, // changed icon
+      color: 'from-neon-purple to-pink-500', // changed color
+      status: 'CODING', // changed status
+      level: 'LVL_94', // changed
       social: {
         github: '#',
         linkedin: '#',
