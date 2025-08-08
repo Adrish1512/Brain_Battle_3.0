@@ -93,12 +93,12 @@ const Hero = () => {
 
       {/* Data Streams */}
       <div className="absolute inset-0">
-        {[...Array(8)].map((_, i) => (
+        {[...Array(3)].map((_, i) => (
           <div
             key={i}
             className="data-stream"
             style={{
-              left: `${10 + i * 12}%`,
+              left: `${10 + i * 30}%`,
               animationDelay: `${i * 2}s`,
               animationDuration: `${15 + Math.random() * 10}s`,
             }}
@@ -108,7 +108,7 @@ const Hero = () => {
 
       {/* Floating Cyber Elements */}
       <div className="absolute inset-0">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(8)].map((_, i) => (
           <motion.div
             key={i}
             className="absolute"
