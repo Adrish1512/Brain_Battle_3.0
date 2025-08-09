@@ -106,31 +106,41 @@ const Hero = () => {
         ))}
       </div>
 
-      {/* Floating Cyber Elements */}
-      <div className="absolute inset-0">
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -50, 0],
-              opacity: [0.2, 1, 0.2],
-              rotate: [0, 180, 360],
-            }}
-            transition={{
-              duration: 8 + Math.random() * 4,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-            }}
-          >
-            <Cpu className="h-4 w-4 text-cyber-cyan opacity-30" />
-          </motion.div>
-        ))}
-      </div>
+   {/* Floating Cyber Elements */}
+<div className="absolute inset-0 overflow-hidden">
+  {[...Array(12)].map((_, i) => {
+    
+    const column = i % 4; 
+    const row = Math.floor(i / 4);  
+    
+    return (
+      <motion.div
+        key={i}
+        className="absolute text-cyber-cyan opacity-60 text-2xl"
+        style={{ 
+          left: `${15 + (column * 25)}%`,  
+          top: `${10 + (row * 25)}%`       
+        }}
+        animate={{
+          y: [-40, 40],
+          x: [-15, 15], 
+          rotate: [0, 360], 
+          scale: [0.9, 1.1, 0.9],
+          opacity: [0.2, 0.5, 0.2]
+        }}
+        transition={{
+          duration: 15 + Math.random() * 8,
+          repeat: Infinity,
+          delay: Math.random() * 10,
+          ease: "easeInOut",
+          type: "tween"
+        }}
+      >
+        <Cpu className="h-4 w-4" />
+      </motion.div>
+    );
+  })}
+</div>
 
       <div ref={heroRef} className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
