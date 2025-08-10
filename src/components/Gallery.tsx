@@ -144,7 +144,7 @@ const Gallery = () => {
                   <img
                     src={image.src}
                     alt={image.alt}
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110 group-active:scale-105"
+                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105 group-active:scale-105"
                   />
                   
                   {/* Cyber Overlay */}

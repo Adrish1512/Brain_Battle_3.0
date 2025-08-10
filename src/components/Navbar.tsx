@@ -113,7 +113,7 @@ const Navbar = () => {
                     onClick={() => scrollToSection(item.href)}
                     whileHover={{ 
                       scale: 1.1, 
-                      textShadow: '0 0 10px #06B6D4',
+                      textShadow: '0 0 4px #06B6D4',
                       y: -2
                     }}
                     whileTap={{ scale: 0.95 }}
@@ -157,7 +157,7 @@ const Navbar = () => {
                   <motion.button
                     key={item.name}
                     onClick={() => scrollToSection(item.href)}
-                    whileHover={{ x: 10, textShadow: '0 0 10px #06B6D4' }}
+                    whileHover={{ x: 10, textShadow: '0 0 4px #06B6D4' }}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}

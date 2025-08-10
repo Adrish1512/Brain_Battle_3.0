@@ -176,7 +176,8 @@ const Hero = () => {
               <span className="text-4xl md:text-6xl font-orbitron font-black text-white animate-neon-pulse">
                 3.0
               </span>
-              <div className="absolute -inset-4 bg-gradient-to-r from-cyber-cyan/20 via-neon-purple/20 to-neon-pink/20 blur-xl animate-pulse" />
+              {/* Background Glow Effect */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyber-cyan/10 via-neon-purple/10 to-neon-pink/10 blur-lg animate-pulse" />
             </motion.div>
           </div>
 
@@ -233,7 +234,6 @@ const Hero = () => {
               rel="noopener noreferrer"
               whileHover={{ 
                 scale: 1.05,
-                boxShadow: '0 0 40px #06B6D4, 0 0 60px #8B5CF6',
               }}
               whileTap={{ scale: 0.95 }}
               className="inline-flex items-center gap-3 bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-1 rounded-full text-lg font-orbitron font-bold group relative overflow-hidden"
@@ -264,7 +264,7 @@ const Hero = () => {
                   { value: countdown.seconds.toString().padStart(2, '0'), label: 'SEC' },
                 ].map((unit) => (
                   <div key={unit.label} className="space-y-1 sm:space-y-2 md:space-y-4">
-                    <div className="text-2xl sm:text-3xl md:text-5xl lg:text-7xl font-orbitron font-black text-neon-cyan animate-neon-pulse">
+                    <div className="text-xl sm:text-2xl md:text-4xl lg:text-6xl font-orbitron font-black text-cyber-cyan animate-countdown-glow">
                       {unit.value}
                     </div>
                     <div className="text-xs sm:text-sm md:text-lg lg:text-2xl font-tech text-gray-400 uppercase tracking-wider">

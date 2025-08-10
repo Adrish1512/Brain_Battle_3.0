@@ -100,7 +100,7 @@ const Footer = () => {
                 <li key={link.name}>
                   <motion.button
                     onClick={() => scrollToSection(link.href)}
-                    whileHover={{ x: 5, textShadow: '0 0 10px #06B6D4' }}
+                    whileHover={{ x: 5, textShadow: '0 0 4px #06B6D4' }}
                     className="text-gray-400 hover:text-cyber-cyan transition-all duration-200 text-sm font-tech flex items-center gap-2"
                   >
                     <span>&gt;</span>
@@ -113,7 +113,7 @@ const Footer = () => {
                   href="https://forms.gle/example"
                   target="_blank"
                   rel="noopener noreferrer"
-                  whileHover={{ x: 5, textShadow: '0 0 10px #06B6D4' }}
+                  whileHover={{ x: 5, textShadow: '0 0 4px #06B6D4' }}
                   className="text-gray-400 hover:text-cyber-cyan transition-all duration-200 text-sm font-tech flex items-center gap-2"
                 >
                   <span>&gt;</span>
@@ -199,21 +199,21 @@ const Footer = () => {
             <div className="flex items-center space-x-6 text-sm text-gray-400 font-tech">
               <motion.a 
                 href="#" 
-                whileHover={{ textShadow: '0 0 10px #06B6D4' }}
+                whileHover={{ textShadow: '0 0 4px #06B6D4' }}
                 className="hover:text-cyber-cyan transition-colors duration-200"
               >
                 Privacy Protocol
               </motion.a>
               <motion.a 
                 href="#" 
-                whileHover={{ textShadow: '0 0 10px #06B6D4' }}
+                whileHover={{ textShadow: '0 0 4px #06B6D4' }}
                 className="hover:text-cyber-cyan transition-colors duration-200"
               >
                 Terms of Service
               </motion.a>
               <motion.a 
                 href="#" 
-                whileHover={{ textShadow: '0 0 10px #06B6D4' }}
+                whileHover={{ textShadow: '0 0 4px #06B6D4' }}
                 className="hover:text-cyber-cyan transition-colors duration-200"
               >
                 Code of Conduct

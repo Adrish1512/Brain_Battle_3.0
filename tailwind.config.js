@@ -35,12 +35,26 @@ export default {
         },
         'neon-pulse': {
           '0%': { 
-            textShadow: '0 0 5px #06B6D4, 0 0 10px #06B6D4, 0 0 15px #06B6D4, 0 0 20px #06B6D4',
+            textShadow: '0 0 2px #06B6D4, 0 0 4px #06B6D4, 0 0 6px #06B6D4',
             filter: 'brightness(1)'
           },
           '100%': { 
-            textShadow: '0 0 10px #06B6D4, 0 0 20px #06B6D4, 0 0 30px #06B6D4, 0 0 40px #06B6D4',
-            filter: 'brightness(1.2)'
+            textShadow: '0 0 4px #06B6D4, 0 0 8px #06B6D4, 0 0 12px #06B6D4',
+            filter: 'brightness(1.1)'
+          },
+        },
+        'countdown-glow': {
+          '0%': { 
+            textShadow: '0 0 4px #ffffff, 0 0 8px #ffffff, 0 0 12px #ffffff, 0 0 16px #ffffff',
+            filter: 'brightness(1)'
+          },
+          '50%': { 
+            textShadow: '0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 24px #ffffff, 0 0 32px #ffffff',
+            filter: 'brightness(1.3)'
+          },
+          '100%': { 
+            textShadow: '0 0 4px #ffffff, 0 0 8px #ffffff, 0 0 12px #ffffff, 0 0 16px #ffffff',
+            filter: 'brightness(1)'
           },
         },
         'cyber-float': {
@@ -58,10 +72,10 @@ export default {
         },
       },
       boxShadow: {
-        'neon-cyan': '0 0 20px #06B6D4',
-        'neon-purple': '0 0 20px #8B5CF6',
-        'neon-pink': '0 0 20px #EC4899',
-        'cyber-glow': '0 0 30px rgba(6, 182, 212, 0.5), inset 0 0 30px rgba(139, 92, 246, 0.2)',
+        'neon-cyan': '0 0 8px #06B6D4',
+        'neon-purple': '0 0 8px #8B5CF6',
+        'neon-pink': '0 0 8px #EC4899',
+        'cyber-glow': '0 0 12px rgba(6, 182, 212, 0.3), inset 0 0 12px rgba(139, 92, 246, 0.1)',
       },
     },
   },

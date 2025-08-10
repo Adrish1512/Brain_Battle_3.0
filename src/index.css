@@ -46,10 +46,10 @@
   .glitch-text {
     position: relative;
     text-shadow:
-      0 0 8px #06B6D4,
-      0 0 16px #8B5CF6,
-      0 0 32px #EC4899,
-      0 0 48px #06B6D4;
+      0 0 3px #06B6D4,
+      0 0 6px #8B5CF6,
+      0 0 12px #EC4899,
+      0 0 18px #06B6D4;
   }
   
   .glitch-text::before,
@@ -61,10 +61,10 @@
     width: 100%;
     height: 100%;
     text-shadow:
-      0 0 8px #06B6D4,
-      0 0 16px #8B5CF6,
-      0 0 32px #EC4899,
-      0 0 48px #06B6D4;
+      0 0 3px #06B6D4,
+      0 0 6px #8B5CF6,
+      0 0 12px #EC4899,
+      0 0 18px #06B6D4;
   }
   
   .glitch-text::before {
@@ -72,9 +72,9 @@
     color: #06B6D4;
     z-index: -1;
     text-shadow:
-      0 0 12px #06B6D4,
-      0 0 24px #06B6D4,
-      0 0 48px #06B6D4;
+      0 0 4px #06B6D4,
+      0 0 8px #06B6D4,
+      0 0 16px #06B6D4;
   }
   
   .glitch-text::after {
@@ -82,9 +82,9 @@
     color: #EC4899;
     z-index: -2;
     text-shadow:
-      0 0 12px #EC4899,
-      0 0 24px #EC4899,
-      0 0 48px #EC4899;
+      0 0 4px #EC4899,
+      0 0 8px #EC4899,
+      0 0 16px #EC4899;
   }
   
   .data-stream {
@@ -94,7 +94,7 @@
     height: 100vh;
     background: linear-gradient(to bottom, transparent, #06B6D4, transparent);
     animation: data-stream 15s linear infinite;
-    opacity: 0.3;
+    opacity: 0.2;
   }
   
   .scan-line {
@@ -105,18 +105,17 @@
     height: 2px;
     background: linear-gradient(90deg, transparent, #06B6D4, transparent);
     animation: scan-line 3s linear infinite;
-    opacity: 0.5;
+    opacity: 0.3;
     z-index: 1000;
   }
   
   .neon-glow {
     color: #19e6ff;
     text-shadow:
-      0 0 8px #19e6ff,
-      0 0 16px #19e6ff,
-      0 0 32px #19e6ff,
-      0 0 64px #19e6ff,
-      0 0 128px #19e6ff;
+      0 0 3px #19e6ff,
+      0 0 6px #19e6ff,
+      0 0 12px #19e6ff,
+      0 0 24px #19e6ff;
   }
   
   .hamburger-glow {
@@ -156,10 +155,10 @@
 /* Hamburger menu animations */
 @keyframes hamburger-glow {
   0%, 100% { 
-    box-shadow: 0 0 5px rgba(6,182,212,0.3);
+    box-shadow: 0 0 2px rgba(6,182,212,0.2);
   }
   50% { 
-    box-shadow: 0 0 20px rgba(6,182,212,0.6), 0 0 30px rgba(6,182,212,0.4);
+    box-shadow: 0 0 8px rgba(6,182,212,0.4), 0 0 12px rgba(6,182,212,0.2);
   }
 }
 
