@@ -45,15 +45,15 @@ export default {
         },
         'countdown-glow': {
           '0%': { 
-            textShadow: '0 0 4px #ffffff, 0 0 8px #ffffff, 0 0 12px #ffffff, 0 0 16px #ffffff',
+            textShadow: '0 0 2px #ffffff, 0 0 4px #ffffff, 0 0 6px #ffffff',
             filter: 'brightness(1)'
           },
           '50%': { 
-            textShadow: '0 0 8px #ffffff, 0 0 16px #ffffff, 0 0 24px #ffffff, 0 0 32px #ffffff',
-            filter: 'brightness(1.3)'
+            textShadow: '0 0 4px #ffffff, 0 0 8px #ffffff, 0 0 12px #ffffff',
+            filter: 'brightness(1.1)'
           },
           '100%': { 
-            textShadow: '0 0 4px #ffffff, 0 0 8px #ffffff, 0 0 12px #ffffff, 0 0 16px #ffffff',
+            textShadow: '0 0 2px #ffffff, 0 0 4px #ffffff, 0 0 6px #ffffff',
             filter: 'brightness(1)'
           },
         },
