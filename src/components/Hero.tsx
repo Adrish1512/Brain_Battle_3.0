@@ -18,7 +18,7 @@ const Hero = () => {
       VanillaTilt.init(heroRef.current, {
         max: 5,
         speed: 400,
-        scale: 1.02,
+        scale: 1.01,
       });
     }
     if (ctaRef.current) {
@@ -83,7 +83,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[80px] sm:pt-16 lg:pt-[130px]">
+    <section id="home" className="relative min-h-screen lg:min-h-[110vh] flex items-center justify-center overflow-hidden pt-[80px] sm:pt-16 lg:pt-[130px]">
       {/* Cyberpunk Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-900/10 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.1),transparent_50%)]" />
@@ -250,24 +250,24 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="pt-8"
+            className="pt-6"
           >
-            <div className="cyber-border rounded-2xl p-4 sm:p-6 md:p-10 max-w-2xl mx-auto bg-black/50 backdrop-blur-sm">
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-tech text-cyber-cyan mb-4 sm:mb-6 md:mb-8 animate-pulse">
+            <div className="cyber-border rounded-xl p-3 sm:p-4 md:p-6 max-w-xl mx-auto bg-black/50 backdrop-blur-sm overflow-hidden transform-gpu">
+              <h3 className="text-base sm:text-lg md:text-xl font-tech text-cyber-cyan mb-3 sm:mb-4 md:mb-6 animate-pulse">
                 &gt; SYSTEM_COUNTDOWN
               </h3>
-              <div className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-6 lg:gap-8 text-center">
+              <div className="grid grid-cols-4 gap-2 sm:gap-3 md:gap-4 text-center">
                 {[
                   { value: countdown.days.toString().padStart(2, '0'), label: 'DAYS' },
                   { value: countdown.hours.toString().padStart(2, '0'), label: 'HRS' },
                   { value: countdown.minutes.toString().padStart(2, '0'), label: 'MIN' },
                   { value: countdown.seconds.toString().padStart(2, '0'), label: 'SEC' },
                 ].map((unit) => (
-                  <div key={unit.label} className="space-y-1 sm:space-y-2 md:space-y-4">
-                    <div className="text-xl sm:text-2xl md:text-4xl lg:text-6xl font-orbitron font-black text-cyber-cyan animate-countdown-glow">
+                  <div key={unit.label} className="space-y-1 sm:space-y-2">
+                    <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-orbitron font-black text-cyber-cyan animate-countdown-glow">
                       {unit.value}
                     </div>
-                    <div className="text-xs sm:text-sm md:text-lg lg:text-2xl font-tech text-gray-400 uppercase tracking-wider">
+                    <div className="text-xs sm:text-sm font-tech text-gray-400 uppercase tracking-wider">
                       {unit.label}
                     </div>
                   </div>
