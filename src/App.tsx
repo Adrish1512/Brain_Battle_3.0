@@ -1,4 +1,4 @@
-import { useEffect, Suspense, lazy } from 'react';
+import { useEffect, Suspense, useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -6,8 +6,11 @@ import Team from './components/Team';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 import Event from './components/Event';
+import LoadingScreen from './components/LoadingScreen';
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     // Update document title
     document.title = 'Brain Battle 3.0';
@@ -20,24 +23,31 @@ function App() {
     };
   }, []);
 
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden font-orbitron">
-      <Navbar />
-      <main>
-        <Hero />
-        <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
-          <Event />
+    <>
+      {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
+      <div className="min-h-screen bg-black text-white overflow-x-hidden font-orbitron">
+        {!isLoading && <Navbar />}
+        <main>
+          <Hero />
+          <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+            <Event />
+          </Suspense>
+          <About />
+          <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
+            <Gallery />
+          </Suspense>
+          <Team />
+        </main>
+        <Suspense fallback={null}>
+          <Footer />
         </Suspense>
-        <About />
-        <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
-          <Gallery />
-        </Suspense>
-        <Team />
-      </main>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
-    </div>
+      </div>
+    </>
   );
 }
 
