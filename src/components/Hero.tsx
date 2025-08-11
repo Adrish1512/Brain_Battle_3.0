@@ -83,7 +83,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-[140vh] flex items-center justify-center overflow-hidden pt-28">
+    <section id="home" className="relative min-h-[140vh] flex items-center justify-center overflow-hidden pt-8 sm:pt-28">
       {/* Cyberpunk Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-900/10 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.1),transparent_50%)]" />
