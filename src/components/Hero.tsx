@@ -83,7 +83,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen lg:min-h-[110vh] flex items-center justify-center overflow-hidden pt-[80px] sm:pt-16 lg:pt-[130px]">
+    <section id="home" className="relative min-h-screen lg:min-h-[125vh] flex items-center justify-center overflow-hidden pt-[80px] sm:pt-16 lg:pt-[130px]">
       {/* Cyberpunk Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-900/10 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.1),transparent_50%)]" />
@@ -252,7 +252,14 @@ const Hero = () => {
             transition={{ delay: 1.5, duration: 0.8 }}
             className="pt-6"
           >
-            <div className="cyber-border rounded-xl p-3 sm:p-4 md:p-6 max-w-xl mx-auto bg-black/50 backdrop-blur-sm overflow-hidden transform-gpu">
+            <motion.div 
+              whileHover={{ 
+                scale: 1.02,
+                y: -2,
+                transition: { duration: 0.2 }
+              }}
+              className="cyber-border rounded-xl p-3 sm:p-4 md:p-6 max-w-xl mx-auto bg-black/50 backdrop-blur-sm overflow-hidden transform-gpu cursor-pointer hover:bg-black/60 transition-all duration-300 countdown-hover"
+            >
               <h3 className="text-base sm:text-lg md:text-xl font-tech text-cyber-cyan mb-3 sm:mb-4 md:mb-6 animate-pulse">
                 &gt; SYSTEM_COUNTDOWN
               </h3>
@@ -263,17 +270,24 @@ const Hero = () => {
                   { value: countdown.minutes.toString().padStart(2, '0'), label: 'MIN' },
                   { value: countdown.seconds.toString().padStart(2, '0'), label: 'SEC' },
                 ].map((unit) => (
-                  <div key={unit.label} className="space-y-1 sm:space-y-2">
-                    <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-orbitron font-black text-cyber-cyan animate-countdown-glow">
+                  <motion.div 
+                    key={unit.label} 
+                    className="space-y-1 sm:space-y-2"
+                    whileHover={{ 
+                      scale: 1.05,
+                      transition: { duration: 0.2 }
+                    }}
+                  >
+                    <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-orbitron font-black text-cyber-cyan hover:text-white transition-colors duration-300 countdown-number-hover">
                       {unit.value}
                     </div>
-                    <div className="text-xs sm:text-sm font-tech text-gray-400 uppercase tracking-wider">
+                    <div className="text-xs sm:text-sm font-tech text-gray-400 uppercase tracking-wider hover:text-gray-300 transition-colors duration-300">
                       {unit.label}
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
-            </div>
+            </motion.div>
           </motion.div>
         </motion.div>
 
