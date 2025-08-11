@@ -403,7 +403,7 @@ const Team = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <motion.a
-                    href="mailto:hello@codingjunction.edu"
+                    href="https://coding-junction.in/"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-1 rounded-full font-orbitron font-bold group"
