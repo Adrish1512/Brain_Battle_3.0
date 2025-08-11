@@ -190,9 +190,9 @@ const Gallery = () => {
                 href="https://forms.gle/example"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-1 rounded-full font-orbitron font-bold group"
+                className="inline-flex items-center gap-1 bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-0.5 rounded-full font-orbitron font-bold group"
               >
-                <span className="bg-black px-4 sm:px-6 py-2 sm:py-3 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-2 text-sm sm:text-base">
+                <span className="bg-black px-2 py-1 sm:px-4 sm:py-2 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm">
                   &gt; ENTER_THE_MATRIX
                   <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
                 </span>

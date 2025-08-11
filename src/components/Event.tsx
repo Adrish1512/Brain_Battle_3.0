@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Code, Brain, Lightbulb, Trophy } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';

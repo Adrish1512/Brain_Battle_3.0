@@ -236,11 +236,11 @@ const Hero = () => {
                 scale: 1.05,
               }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center gap-3 bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-1 rounded-full text-lg font-orbitron font-bold group relative overflow-hidden"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-0.5 rounded-full text-base sm:text-lg font-orbitron font-bold group relative overflow-hidden"
             >
-              <span className="bg-black px-8 py-4 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-3">
+              <span className="bg-black px-4 py-2 sm:px-8 sm:py-4 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-2 sm:gap-3">
                 <span>&gt; REGISTER_NOW</span>
-                <ExternalLink className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                <ExternalLink className="h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </span>
             </motion.a>
           </motion.div>

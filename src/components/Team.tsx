@@ -406,9 +406,9 @@ const Team = () => {
                     href="https://coding-junction.in/"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-1 rounded-full font-orbitron font-bold group"
+                    className="bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-0.5 rounded-full font-orbitron font-bold group"
                   >
-                    <span className="bg-black px-8 py-3 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-2">
+                    <span className="bg-black px-4 py-2 sm:px-8 sm:py-3 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-2 text-sm sm:text-base">
                       &gt; ESTABLISH_CONNECTION
                       <Mail className="h-4 w-4" />
                     </span>
