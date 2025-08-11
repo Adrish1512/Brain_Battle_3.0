@@ -73,7 +73,7 @@ const Hero = () => {
   const glitchVariants = {
     initial: { x: 0 },
     animate: {
-      x: [0, -2, 2, 0],
+      x: [0, -1, 1, 0], // reduced from [-2, 2, 0]
       transition: {
         duration: 0.2,
         repeat: Infinity,
@@ -83,7 +83,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-[140vh] flex items-center justify-center overflow-hidden pt-8 sm:pt-28">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-[80px] sm:pt-16 lg:pt-[130px]">
       {/* Cyberpunk Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-900/10 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.1),transparent_50%)]" />
@@ -147,10 +147,10 @@ const Hero = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="space-y-8"
+          className="space-y-4 sm:space-y-8"
         >
           {/* Title with Glitch Effect */}
-          <div className="space-y-6">
+          <div className="space-y-2 sm:space-y-6">
             <motion.div
               animate={floatingAnimation}
               className="inline-block"
