@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Zap, Eye } from 'lucide-react';
+import { X, ExternalLink, Eye } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
 
 const Gallery = () => {
@@ -94,20 +94,7 @@ const Gallery = () => {
     return colors[status as keyof typeof colors] || 'text-white';
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 1, scale: 1, rotateY: 0 },
-    visible: { opacity: 1, scale: 1, rotateY: 0 },
-  };
+  
 
     return (
     <section id="gallery" className="py-10 sm:py-16 md:py-20 relative overflow-hidden min-h-screen">
@@ -180,11 +167,11 @@ const Gallery = () => {
           <div className="text-center pt-8 sm:pt-12">
             <div className="cyber-border rounded-2xl p-4 sm:p-8 max-w-2xl mx-auto bg-black/50 backdrop-blur-sm">
               <h3 className="text-xl sm:text-2xl font-orbitron font-bold text-white mb-4">
-                &gt; JOIN THE NEXT CHAPTER
+                &gt; VIEW PAST SEASONS
               </h3>
               <p className="text-sm sm:text-base text-gray-300 mb-6 font-tech">
-                &gt; Create new memories, forge digital alliances, and showcase your skills at Brain Battle 3.0. 
-                Your code could be featured in our next data archive!
+                &gt; Explore highlights, projects, and winners from previous Brain Battle seasons. 
+                Relive the moments and get inspired for what's next.
               </p>
               <a
                 href="https://forms.gle/example"
@@ -193,7 +180,7 @@ const Gallery = () => {
                 className="inline-flex items-center gap-1 bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-0.5 rounded-full font-orbitron font-bold group"
               >
                 <span className="bg-black px-2 py-1 sm:px-4 sm:py-2 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm">
-                  &gt; ENTER_THE_MATRIX
+                  &gt; VIEW_PAST_SEASONS
                   <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
                 </span>
               </a>
