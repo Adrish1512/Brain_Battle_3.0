@@ -79,15 +79,6 @@ const Gallery = () => {
 
   const getStatusColor = (status: string) => {
     const colors = {
-      ARCHIVED: 'text-gray-400',
-      PROCESSING: 'text-cyber-cyan',
-      CONNECTED: 'text-neon-green',
-      COMPLETE: 'text-neon-purple',
-      STANDBY: 'text-cyber-yellow',
-      LAUNCHED: 'text-neon-pink',
-      SYNCING: 'text-cyber-cyan',
-      ACHIEVED: 'text-neon-green',
-      UPDATING: 'text-neon-purple',
       'BRAIN BATTLE 1': 'text-neon-green',
       'BRAIN BATTLE 2.0': 'text-cyber-cyan',
     };
