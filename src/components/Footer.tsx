@@ -1,27 +1,26 @@
 import { motion } from 'framer-motion';
-import { Github, Twitter, Instagram, Mail, MapPin, Calendar, Phone, Wifi } from 'lucide-react';
+import { Github, X, Instagram as InstagramIcon, Mail, MapPin, Calendar, Phone, Wifi } from 'lucide-react';
 import Logo from '../../Logo.png';
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Github, href: '#', label: 'GitHub', color: 'hover:text-white' },
-    { icon: Twitter, href: '#', label: 'Twitter', color: 'hover:text-cyber-cyan' },
-    { icon: Instagram, href: '#', label: 'Instagram', color: 'hover:text-neon-pink' },
-    { icon: Mail, href: 'mailto:hello@codingjunction.edu', label: 'Email', color: 'hover:text-neon-green' },
+    { icon: Github, href: 'https://github.com/coding-junction', label: 'GitHub', color: 'hover:text-white' },
+    { icon: X, href: 'https://x.com/coding_junction', label: 'X (Twitter)', color: 'hover:text-cyber-cyan' },
+    { icon: InstagramIcon, href: 'https://www.instagram.com/coding.junction?igsh=MTV6aHphZG85eWt2YQ==', label: 'Instagram', color: 'hover:text-neon-pink' },
+    { icon: Mail, href: 'mailto:uit.coding.junction@gmail.com', label: 'Email', color: 'hover:text-neon-green' },
   ];
 
   const quickLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About Us', href: '#about' },
     { name: 'Gallery', href: '#gallery' },
-    { name: 'Team', href: '#team' },
   ];
 
   const contactInfo = [
     { icon: MapPin, text: 'UIT,BU Campus, Burdwan', status: 'LOCATED' },
     { icon: Calendar, text: 'December 15-18, 2025', status: 'SCHEDULED' },
     { icon: Phone, text: '+1 (555) 123-4567', status: 'ACTIVE' },
-    { icon: Mail, text: 'codingjunction@gmail.com', status: 'ONLINE' },
+    { icon: Mail, text: 'uit.coding.junction@gmail.com', status: 'ONLINE' },
   ];
 
   const scrollToSection = (href: string) => {
@@ -110,7 +109,7 @@ const Footer = () => {
               ))}
               <li>
                 <motion.a
-                  href="https://forms.gle/example"
+                  href="https://forms.gle/your-actual-form-id"
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ x: 5, textShadow: '0 0 4px #06B6D4' }}
@@ -198,21 +197,27 @@ const Footer = () => {
             </p>
             <div className="flex items-center space-x-6 text-sm text-gray-400 font-tech">
               <motion.a 
-                href="#" 
+                href="https://coding-junction.in/privacy" 
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}
                 className="hover:text-cyber-cyan transition-colors duration-200"
               >
-                Privacy Protocol
+                Privacy Policy
               </motion.a>
               <motion.a 
-                href="#" 
+                href="https://coding-junction.in/terms" 
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}
                 className="hover:text-cyber-cyan transition-colors duration-200"
               >
                 Terms of Service
               </motion.a>
               <motion.a 
-                href="#" 
+                href="https://coding-junction.in/conduct" 
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}
                 className="hover:text-cyber-cyan transition-colors duration-200"
               >

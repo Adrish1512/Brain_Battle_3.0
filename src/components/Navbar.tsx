@@ -59,7 +59,6 @@ const Navbar = () => {
     { name: 'Event', href: '#event' },
     { name: 'About Us', href: '#about' },
     { name: 'Gallery', href: '#gallery' },
-    { name: 'Team', href: '#team' },
   ];
 
   const scrollToSection = (href: string) => {
