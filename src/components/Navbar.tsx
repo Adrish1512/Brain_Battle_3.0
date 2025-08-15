@@ -100,7 +100,7 @@ const Navbar = () => {
               whileHover={{ scale: 1.05 }}
               className="flex items-center space-x-3 cursor-pointer"
             >
-              <img src={Logo} alt="Logo" className="h-12 px-2 object-contain" style={{ maxHeight: '1.8rem' }} />
+              <img src={Logo} alt="Logo" className="h-8 sm:h-10 md:h-12 px-2 object-contain" style={{ maxHeight: '1.8rem' }} />
             </motion.div>
 
             {/* Desktop Navigation */}
