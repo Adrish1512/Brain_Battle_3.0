@@ -250,7 +250,7 @@ const Hero = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.8 }}
-            className="pt-6"
+            className="pt-16 sm:pt-20 md:pt-24"
           >
             <motion.div 
               whileHover={{ 
