@@ -22,58 +22,58 @@ const Gallery = () => {
 
   const images = [
     {
-      src: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?w=800&h=600&fit=crop',
+      src: 'images/05.jpg',
       alt: 'Team collaboration during hackathon',
       caption: 'BRAIN_BATTLE_2.0 >> TEAM_SYNC',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&h=600&fit=crop',
+      src: 'images/03.jpg',
       alt: 'Coding session',
       caption: 'NEURAL_CODING >> ACTIVE',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop',
+      src: 'images/01.jpg',
       alt: 'Team working together',
       caption: 'COLLECTIVE_INTELLIGENCE >> ONLINE',
-      status: 'BRAIN BATTLE 1',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&h=600&fit=crop',
-      alt: 'Presentation time',
-      caption: 'DEMO_PROTOCOL >> EXECUTED',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop',
+      src: 'images/IMG20231207163435.jpg',
+      alt: 'Presentation time',
+      caption: 'DEMO_PROTOCOL >> EXECUTED',
+      status: 'BRAIN BATTLE 1.0',
+    },
+    {
+      src: 'images/07.jpg',
       alt: 'Developer workspace',
       caption: 'WORKSTATION_MATRIX >> READY',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: 'https://images.unsplash.com/photo-1515378791036-0648a814c963?w=800&h=600&fit=crop',
+      src: 'images/AGC_20231207_150422544.jpg',
       alt: 'Tech event',
       caption: 'INITIALIZATION >> SUCCESS',
+      status: 'BRAIN BATTLE 1.0',
+    },
+    {
+      src: 'images/08.jpg',
+      alt: 'Networking session',
+      caption: 'NETWORK_PROTOCOL >> ACTIVE',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop',
-      alt: 'Networking session',
-      caption: 'NETWORK_PROTOCOL >> ACTIVE',
-      status: 'BRAIN BATTLE 1',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop',
+      src: 'images/IMG_8288.JPG',
       alt: 'Award ceremony',
       caption: 'VICTORY_SEQUENCE >> COMPLETE',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: 'https://images.unsplash.com/photo-1517180102446-f3ece451e9d8?w=800&h=600&fit=crop',
+      src: 'images/IMG_20231207_213018.jpg',
       alt: 'Workshop session',
       caption: 'SKILL_UPGRADE >> INSTALLING',
-      status: 'BRAIN BATTLE 2.0',
+      status: 'BRAIN BATTLE 1.0',
     },
   ];
 
