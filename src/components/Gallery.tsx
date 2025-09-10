@@ -3,6 +3,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Eye } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
 
+// Import images properly for Vite
+import img01 from '../../images/01.jpg';
+import img03 from '../../images/03.jpg';
+import img05 from '../../images/05.jpg';
+import img07 from '../../images/07.jpg';
+import img08 from '../../images/08.jpg';
+import imgAGC from '../../images/AGC_20231207_150422544.jpg';
+import imgIMG1 from '../../images/IMG_20231207_213018.jpg';
+import imgIMG2 from '../../images/IMG20231207163435.jpg';
+import imgIMG3 from '../../images/IMG_8288.JPG';
+
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -22,55 +33,55 @@ const Gallery = () => {
 
   const images = [
     {
-      src: '../../images/05.jpg',
+      src: img05,
       alt: 'Team collaboration during hackathon',
       caption: 'BRAIN_BATTLE_2.0 >> TEAM_SYNC',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: '../../images/03.jpg',
+      src: img03,
       alt: 'Coding session',
       caption: 'NEURAL_CODING >> ACTIVE',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: '../../images/01.jpg',
+      src: img01,
       alt: 'Team working together',
       caption: 'COLLECTIVE_INTELLIGENCE >> ONLINE',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: '../../images/IMG20231207163435.jpg',
+      src: imgIMG2,
       alt: 'Presentation time',
       caption: 'DEMO_PROTOCOL >> EXECUTED',
       status: 'BRAIN BATTLE 1.0',
     },
     {
-      src: '../../images/07.jpg',
+      src: img07,
       alt: 'Developer workspace',
       caption: 'WORKSTATION_MATRIX >> READY',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: '../../images/AGC_20231207_150422544.jpg',
+      src: imgAGC,
       alt: 'Tech event',
       caption: 'INITIALIZATION >> SUCCESS',
       status: 'BRAIN BATTLE 1.0',
     },
     {
-      src: '../../images/08.jpg',
+      src: img08,
       alt: 'Networking session',
       caption: 'NETWORK_PROTOCOL >> ACTIVE',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: '../../images/IMG_8288.JPG',
+      src: imgIMG3,
       alt: 'Award ceremony',
       caption: 'VICTORY_SEQUENCE >> COMPLETE',
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: '../../images/IMG_20231207_213018.jpg',
+      src: imgIMG1,
       alt: 'Workshop session',
       caption: 'SKILL_UPGRADE >> INSTALLING',
       status: 'BRAIN BATTLE 1.0',
