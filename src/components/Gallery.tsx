@@ -70,7 +70,7 @@ const Gallery = () => {
       status: 'BRAIN BATTLE 2.0',
     },
     {
-      src: '../images/IMG_20231207_213018.jpg',
+      src: './images/IMG_20231207_213018.jpg',
       alt: 'Workshop session',
       caption: 'SKILL_UPGRADE >> INSTALLING',
       status: 'BRAIN BATTLE 1.0',
