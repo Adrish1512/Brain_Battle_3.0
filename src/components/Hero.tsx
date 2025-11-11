@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Users, Trophy, ExternalLink, Cpu, Zap } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
+import UnstopLogo from '../../unstop.png';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -84,6 +85,17 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen lg:min-h-[125vh] flex items-center justify-center overflow-hidden pt-[80px] sm:pt-16 lg:pt-[130px]">
+      {/* Powered By Ribbon - Flush to Top of Screen */}
+      <div className="fixed top-0 right-5 z-50 flex flex-col items-center" style={{width:'116px'}}> 
+        <div className="w-full flex flex-col items-center bg-white pt-4 pb-8 px-0 shadow-[0_2px_32px_10px_rgba(34,242,255,0.32),0_0_0_2px_rgba(34,242,255,0.18)]" style={{clipPath:'polygon(0 0, 100% 0, 100% 87%, 50% 100%, 0 87%)'}}> 
+          <span className="w-full text-center text-[15px] font-orbitron font-extrabold tracking-wider uppercase mb-1" style={{color:'#1EC8FF'}}>POWERED BY</span>
+          <div className="flex items-center justify-center mt-0 mb-2">
+            <div className="rounded-full bg-white p-2 flex items-center justify-center" style={{boxShadow:'0 0 20px 4px #36fff955'}}>
+              <img src={UnstopLogo} alt="Powered by Unstop" className="h-11 w-11 rounded-full object-contain block"/>
+            </div>
+          </div>
+        </div>
+      </div>
       {/* Cyberpunk Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-900/10 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.1),transparent_50%)]" />
