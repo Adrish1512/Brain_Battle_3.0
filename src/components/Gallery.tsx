@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Eye } from 'lucide-react';
+import { X, Eye } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
 
 // Import images properly for Vite
@@ -165,27 +165,39 @@ const Gallery = () => {
             ))}
           </div>
 
-          {/* Call to Action */}
-          <div className="text-center pt-8 sm:pt-12">
-            <div className="cyber-border rounded-2xl p-4 sm:p-8 max-w-2xl mx-auto bg-black/50 backdrop-blur-sm">
-              <h3 className="text-xl sm:text-2xl font-orbitron font-bold text-white mb-4">
-                &gt; VIEW PAST SEASONS
+          {/* Video + Details */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+            {/* Left: Video */}
+            <div className="cyber-border rounded-2xl overflow-hidden bg-black/50 backdrop-blur-sm">
+              <div className="relative w-full pt-[56.25%]">
+                <iframe
+                  src="https://www.youtube.com/embed/ey-vdvy2Xe8?si=JDOxcShMlSKcDn5l"
+                  title="Brain Battle Video"
+                  className="absolute inset-0 w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Right: Title + Description */}
+            <div className="cyber-border rounded-2xl p-4 sm:p-6 bg-black/50 backdrop-blur-sm space-y-4">
+              <h3 className="text-2xl sm:text-3xl font-orbitron font-bold">
+                Brain Battle 2.0 - After Movie
               </h3>
-              <p className="text-sm sm:text-base text-gray-300 mb-6 font-tech">
-                &gt; Explore highlights, projects, and winners from previous Brain Battle seasons. 
-                Relive the moments and get inspired for what's next.
-              </p>
-              <a
-                href="https://forms.gle/example"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-0.5 rounded-full font-orbitron font-bold group"
-              >
-                <span className="bg-black px-2 py-1 sm:px-4 sm:py-2 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm">
-                  &gt; VIEW_PAST_SEASONS
-                  <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
-                </span>
-              </a>
+              <div className="text-sm sm:text-base text-gray-300 font-tech leading-relaxed">
+                <p>&gt; Ideas sparked. Minds collided.</p>
+
+                <p className="mt-4">
+                  Magic happened. This wasn’t just a hackathon — it was a journey of energy, teamwork, and raw creation.
+                  Every frame carries a story, every face a spark, every cheer a memory worth reliving.
+                </p>
+
+                <p className="mt-4">
+                  Here’s the aftermovie — a celebration of passion, innovation, and the people who made it unforgettable.
+                </p>
+              </div>
             </div>
           </div>
         </div>
