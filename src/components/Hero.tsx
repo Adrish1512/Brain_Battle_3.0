@@ -99,7 +99,7 @@ const Hero = () => {
               className="rounded-full bg-white p-2 flex items-center justify-center"
               style={{boxShadow:'0 0 20px 4px #36fff955'}}
             >
-              <img src={UnstopLogo} alt="Powered by Unstop" className="h-11 w-11 rounded-full object-contain block"/>
+              <img src={UnstopLogo} alt="Powered by Unstop" className="h-16 w-16 rounded-full object-contain block"/>
             </a>
           </div>
         </div>
@@ -215,7 +215,7 @@ const Hero = () => {
               title="Unstop"
               className="rounded-full bg-white p-2 flex items-center justify-center"
             >
-              <img src={UnstopLogo} alt="Powered by Unstop" className="h-11 w-11 rounded-full object-contain block"/>
+              <img src={UnstopLogo} alt="Powered by Unstop" className="h-16 w-16 rounded-full object-contain block"/>
             </a>
           </div>
 
