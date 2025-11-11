@@ -9,6 +9,7 @@ import LoadingScreen from './components/LoadingScreen';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     // Update document title
@@ -24,9 +25,10 @@ function App() {
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
+    setShowContent(true);
     window.scrollTo({
       top: 0,
-      behavior: 'auto',
+      behavior: 'smooth',
     });
   };
 
@@ -34,11 +36,11 @@ function App() {
     <>
       {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       <div className="min-h-screen bg-black text-white overflow-x-hidden font-orbitron">
-        {!isLoading && <Navbar />}
+        {showContent && <Navbar />}
         <main>
-          {!isLoading && (
+          {showContent && <Hero />}
+          {showContent && (
             <>
-              <Hero />
               <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
                 <Event />
               </Suspense>
@@ -49,9 +51,11 @@ function App() {
             </>
           )}
         </main>
-        <Suspense fallback={null}>
-          <Footer />
-        </Suspense>
+        {showContent && (
+          <Suspense fallback={null}>
+            <Footer />
+          </Suspense>
+        )}
       </div>
     </>
   );
