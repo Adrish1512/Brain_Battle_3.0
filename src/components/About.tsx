@@ -35,7 +35,7 @@ const About = () => {
   const features = [
     {
       icon: Clock,
-      title: '8 HRS CODING',
+      title: '5 HRS CODING',
       description: 'Non-stop development marathon to hack reality',
       color: 'text-cyber-cyan',
       bgColor: 'bg-cyber-cyan/10',
@@ -67,11 +67,11 @@ const About = () => {
     },
     {
       icon: Shield,
-      title: 'MENTOR ACCESS',
-      description: 'Get guidance from tech industry veterans',
-      color: 'text-cyber-green',
-      bgColor: 'bg-cyber-green/10',
-      borderColor: 'border-cyber-green/30',
+      title: 'CROSS TECH',
+      description: 'Compete in a fast-paced multi-domain challenge of tech and logic.',
+      color: 'text-cyber-purple',
+      bgColor: 'bg-cyber-purple/10',
+      borderColor: 'border-cyber-purple/30',
     },
     {
       icon: Cpu,
