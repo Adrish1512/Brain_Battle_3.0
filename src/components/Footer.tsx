@@ -198,7 +198,7 @@ const Footer = () => {
             </p>
             <div className="flex items-center space-x-6 text-sm text-gray-400 font-tech">
               <motion.a 
-                href="https://coding-junction.in/privacy" 
+                href="https://coding-junction.in/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}
@@ -207,7 +207,7 @@ const Footer = () => {
                 Privacy Policy
               </motion.a>
               <motion.a 
-                href="https://coding-junction.in/terms" 
+                href="https://coding-junction.in/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}
@@ -216,7 +216,7 @@ const Footer = () => {
                 Terms of Service
               </motion.a>
               <motion.a 
-                href="https://coding-junction.in/conduct" 
+                href="https://coding-junction.in/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}
