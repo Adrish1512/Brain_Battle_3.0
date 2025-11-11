@@ -24,6 +24,10 @@ function App() {
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
+    window.scrollTo({
+      top: 0,
+      behavior: 'auto',
+    });
   };
 
   return (
