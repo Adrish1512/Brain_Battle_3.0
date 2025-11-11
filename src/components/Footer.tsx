@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Github, X, Instagram as InstagramIcon, Mail, MapPin, Calendar, Phone, Wifi } from 'lucide-react';
+import { Github, X, Instagram as InstagramIcon, Mail, MapPin, Calendar, Phone, Wifi,Globe} from 'lucide-react';
 import Logo from '../../Logo.png';
 
 const Footer = () => {
@@ -8,6 +8,7 @@ const Footer = () => {
     { icon: X, href: 'https://x.com/coding_junction', label: 'X (Twitter)', color: 'hover:text-cyber-cyan' },
     { icon: InstagramIcon, href: 'https://www.instagram.com/coding.junction?igsh=MTV6aHphZG85eWt2YQ==', label: 'Instagram', color: 'hover:text-neon-pink' },
     { icon: Mail, href: 'mailto:uit.coding.junction@gmail.com', label: 'Email', color: 'hover:text-neon-green' },
+    { icon: Globe, href: 'https://coding-junction.in/', label: 'Website', color: 'hover:text-neon-green' },
   ];
 
   const quickLinks = [
@@ -18,8 +19,8 @@ const Footer = () => {
 
   const contactInfo = [
     { icon: MapPin, text: 'UIT,BU Campus, Burdwan', status: 'LOCATED' },
-    { icon: Calendar, text: 'December 15-18, 2025', status: 'SCHEDULED' },
-    { icon: Phone, text: '+1 (555) 123-4567', status: 'ACTIVE' },
+    { icon: Calendar, text: 'December 8 - 12, 2025', status: 'SCHEDULED' },
+    { icon: Phone, text: '+91  98325 05937', status: 'ACTIVE' },
     { icon: Mail, text: 'uit.coding.junction@gmail.com', status: 'ONLINE' },
   ];
 
@@ -193,11 +194,11 @@ const Footer = () => {
         >
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm font-tech">
-              &copy; 2024 CODING JUNCTION. ALL RIGHTS RESERVED. | SYSTEM_STATUS: OPERATIONAL
+              &copy; 2025 CODING JUNCTION. ALL RIGHTS RESERVED. | SYSTEM_STATUS: OPERATIONAL
             </p>
             <div className="flex items-center space-x-6 text-sm text-gray-400 font-tech">
               <motion.a 
-                href="https://coding-junction.in/privacy" 
+                href="https://coding-junction.in/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}
@@ -206,7 +207,7 @@ const Footer = () => {
                 Privacy Policy
               </motion.a>
               <motion.a 
-                href="https://coding-junction.in/terms" 
+                href="https://coding-junction.in/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}
@@ -215,7 +216,7 @@ const Footer = () => {
                 Terms of Service
               </motion.a>
               <motion.a 
-                href="https://coding-junction.in/conduct" 
+                href="https://coding-junction.in/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}

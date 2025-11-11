@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Code, Brain, Lightbulb, Trophy } from 'lucide-react';
+import { Code, Brain, Lightbulb, Trophy, Cpu } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
 
 const Event = () => {
@@ -66,18 +66,29 @@ const Event = () => {
               {
                 title: 'Online Coding Round',
                 desc: 'Test your coding skills in a fast-paced online challenge.',
-                date: 'Dec 15, 2025',
-                status: 'executed',
+                date: 'Dec 8, 2025',
+                status: 'Compiling',
                 icon: Code,
                 color: 'text-cyber-cyan',
                 bgColor: 'bg-cyber-cyan/10',
                 borderColor: 'border-cyber-cyan/30'
               },
               {
+                title: 'Tech Triad',
+                desc: 'A multi-domain challenge testing skills in Hardware, Software, and Logical Reasoning. Teams of three tackle questions from each domain under a 15-minute limit.',
+                date: 'Dec 9, 2025',
+                status: 'Compiling',
+                icon: Cpu,
+                color: 'text-cyber-purple',
+                bgColor: 'bg-cyber-purple/10',
+                borderColor: 'border-cyber-purple/30'
+              },
+
+              {
                 title: 'Brain Brawl',
                 desc: 'Face off in a battle of wits and logic with other teams.',
-                date: 'Dec 17, 2025',
-                status: 'executed',
+                date: 'Dec 10, 2025',
+                status: 'Compiling',
                 icon: Brain,
                 color: 'text-neon-purple',
                 bgColor: 'bg-neon-purple/10',
@@ -86,8 +97,8 @@ const Event = () => {
               {
                 title: 'Final Showdown - Hackathon',
                 desc: 'The ultimate hackathon: build, innovate, and impress the judges.',
-                date: 'Dec 18, 2025',
-                status: 'running',
+                date: 'Dec 11, 2025',
+                status: 'Compiling',
                 icon: Lightbulb,
                 color: 'text-cyber-yellow',
                 bgColor: 'bg-cyber-yellow/10',
@@ -96,8 +107,8 @@ const Event = () => {
               {
                 title: 'Award Ceremony',
                 desc: 'Celebrate the winners and all participants in style.',
-                date: 'Dec 19, 2025',
-                status: 'compiling',
+                date: 'Dec 12, 2025',
+                status: 'Compiling',
                 icon: Trophy,
                 color: 'text-neon-pink',
                 bgColor: 'bg-neon-pink/10',
