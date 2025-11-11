@@ -32,7 +32,7 @@ function App() {
       <div className="min-h-screen bg-black text-white overflow-x-hidden font-orbitron">
         {!isLoading && <Navbar />}
         <main>
-          <Hero />
+          {!isLoading && <Hero />}
           <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
             <Event />
           </Suspense>
