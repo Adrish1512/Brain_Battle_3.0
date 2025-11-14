@@ -17,80 +17,50 @@ import imgIMG3 from '../../images/IMG_8288.JPG';
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
-  const visibleImagesRef = useRef<Set<string>>(new Set());
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
 
-  // Aggressively preload all images in the background
+  // ULTRA-AGGRESSIVE: Load ALL images immediately in parallel with highest priority
   useEffect(() => {
     const allImages = [img05, img03, img01, imgIMG2, img07, imgAGC, img08, imgIMG3, imgIMG1];
     
-    // Preload critical images immediately
-    const criticalImages = [img05, img03, img01];
-    criticalImages.forEach((imgSrc) => {
-      const img = new Image();
-      img.src = imgSrc;
-      img.onload = () => {
-        setLoadedImages((prev) => new Set([...prev, imgSrc]));
-      };
-    });
-
-    // Preload remaining images with a slight delay to not block critical images
-    setTimeout(() => {
-      const remainingImages = allImages.filter(img => !criticalImages.includes(img));
-      remainingImages.forEach((imgSrc) => {
+    // Load ALL images immediately in parallel - no delays, no lazy loading
+    // Using Promise.all for maximum parallelization
+    const loadPromises = allImages.map((imgSrc) => {
+      return new Promise<void>((resolve) => {
+        // Use preload link for highest priority
         const link = document.createElement('link');
-        link.rel = 'prefetch';
+        link.rel = 'preload';
         link.as = 'image';
         link.href = imgSrc;
+        (link as any).fetchPriority = 'high';
         document.head.appendChild(link);
+        
+        // Also create Image object for immediate loading
+        const img = new Image();
+        img.src = imgSrc;
+        (img as any).loading = 'eager';
+        (img as any).fetchPriority = 'high';
+        img.onload = () => {
+          setLoadedImages((prev) => new Set([...prev, imgSrc]));
+          resolve();
+        };
+        img.onerror = () => {
+          // Retry on error
+          const retryImg = new Image();
+          retryImg.src = imgSrc;
+          retryImg.onload = () => {
+            setLoadedImages((prev) => new Set([...prev, imgSrc]));
+            resolve();
+          };
+          retryImg.onerror = () => resolve(); // Resolve anyway to not block
+        };
       });
-    }, 100);
-  }, []);
-
-  // Intersection Observer for smarter lazy loading
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const img = entry.target as HTMLImageElement;
-            const imgSrc = img.src;
-            
-            if (!visibleImagesRef.current.has(imgSrc)) {
-              visibleImagesRef.current.add(imgSrc);
-              
-              // Force load if not already loading
-              if (!img.complete && img.src) {
-                const newImg = new Image();
-                newImg.src = imgSrc;
-                newImg.onload = () => {
-                  setLoadedImages((prevLoaded) => new Set([...prevLoaded, imgSrc]));
-                };
-              }
-            }
-          }
-        });
-      },
-      {
-        rootMargin: '300px', // Start loading 300px before entering viewport
-        threshold: 0.01,
-      }
-    );
-
-    // Observe images after a short delay to ensure refs are set
-    const timeoutId = setTimeout(() => {
-      imageRefs.current.forEach((img) => {
-        if (img) observer.observe(img);
-      });
-    }, 100);
-
-    return () => {
-      clearTimeout(timeoutId);
-      imageRefs.current.forEach((img) => {
-        if (img) observer.unobserve(img);
-      });
-    };
+    });
+    
+    // Start all loads in parallel
+    Promise.all(loadPromises).catch(() => {
+      // Ignore errors, images will load individually
+    });
   }, []);
 
   useEffect(() => {
@@ -199,7 +169,6 @@ const Gallery = () => {
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {images.map((image, index) => {
-              const isCritical = index < 3;
               const isLoaded = loadedImages.has(image.src);
               
               return (
@@ -215,14 +184,11 @@ const Gallery = () => {
                       </div>
                     )}
                     <img
-                      ref={(el) => {
-                        if (el) imageRefs.current[index] = el;
-                      }}
                       src={image.src}
                       alt={image.alt}
-                      loading={isCritical ? "eager" : "lazy"}
+                      loading="eager"
                       decoding="async"
-                      fetchPriority={isCritical ? "high" : "auto"}
+                      fetchPriority="high"
                       onLoad={() => {
                         setLoadedImages((prev) => new Set([...prev, image.src]));
                       }}
@@ -230,6 +196,8 @@ const Gallery = () => {
                         // Retry loading on error
                         const img = new Image();
                         img.src = image.src;
+                        img.loading = 'eager';
+                        img.fetchPriority = 'high';
                         img.onload = () => {
                           setLoadedImages((prev) => new Set([...prev, image.src]));
                         };
