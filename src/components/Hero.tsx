@@ -328,7 +328,7 @@ const Hero = () => {
           >
             <motion.a
               ref={ctaRef}
-              href="https://forms.gle/example"
+              href="https://unstop.com/p/brain-battle-season-3-coding-junction-1593250"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{
