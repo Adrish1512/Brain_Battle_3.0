@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Github, X, Instagram as InstagramIcon, Mail, MapPin, Calendar, Phone, Wifi,Globe} from 'lucide-react';
 import Logo from '../../Logo.png';
 
+
 const Footer = () => {
   const socialLinks = [
     { icon: Github, href: 'https://github.com/coding-junction', label: 'GitHub', color: 'hover:text-white' },
@@ -198,16 +199,16 @@ const Footer = () => {
             </p>
             <div className="flex items-center space-x-6 text-sm text-gray-400 font-tech">
               <motion.a 
-                href="https://coding-junction.in/" 
+                href="https://coding-junction.notion.site/Brain-Battle-3-0-Hacker-Guide-137a1cdfa6ae80d6b682dff1a0f0db72/" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}
                 className="hover:text-cyber-cyan transition-colors duration-200"
               >
-                Privacy Policy
+                Hacker Guide
               </motion.a>
               <motion.a 
-                href="https://coding-junction.in/" 
+                href="https://coding-junction.in/"
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}
@@ -216,7 +217,7 @@ const Footer = () => {
                 Terms of Service
               </motion.a>
               <motion.a 
-                href="https://coding-junction.in/" 
+                href="/coc.pdf" 
                 target="_blank"
                 rel="noopener noreferrer"
                 whileHover={{ textShadow: '0 0 4px #06B6D4' }}

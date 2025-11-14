@@ -16,7 +16,20 @@ import imgIMG3 from '../../images/IMG_8288.JPG';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Preload critical images (first 3 visible images)
+  useEffect(() => {
+    const criticalImages = [img05, img03, img01];
+    criticalImages.forEach((imgSrc) => {
+      const img = new Image();
+      img.src = imgSrc;
+      img.onload = () => {
+        setLoadedImages((prev) => new Set([...prev, imgSrc]));
+      };
+    });
+  }, []);
 
   useEffect(() => {
     cardRefs.current.forEach((card) => {
@@ -123,18 +136,35 @@ const Gallery = () => {
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className="group relative cursor-pointer"
-                onClick={() => setSelectedImage(image.src)}
-              >
-                <div className="relative overflow-hidden rounded-2xl cyber-border bg-black/50 aspect-[4/3]">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105 group-active:scale-105"
-                  />
+            {images.map((image, index) => {
+              const isCritical = index < 3;
+              const isLoaded = loadedImages.has(image.src);
+              
+              return (
+                <div
+                  key={index}
+                  className="group relative cursor-pointer"
+                  onClick={() => setSelectedImage(image.src)}
+                >
+                  <div className="relative overflow-hidden rounded-2xl cyber-border bg-black/50 aspect-[4/3]">
+                    {!isLoaded && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black animate-pulse flex items-center justify-center">
+                        <div className="text-cyber-cyan text-xs font-tech">LOADING...</div>
+                      </div>
+                    )}
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      loading={isCritical ? "eager" : "lazy"}
+                      decoding="async"
+                      fetchPriority={isCritical ? "high" : "auto"}
+                      onLoad={() => {
+                        setLoadedImages((prev) => new Set([...prev, image.src]));
+                      }}
+                      className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105 group-active:scale-105 ${
+                        isLoaded ? 'opacity-100' : 'opacity-0'
+                      }`}
+                    />
                   
                   {/* Cyber Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300">
@@ -162,7 +192,8 @@ const Gallery = () => {
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-cyber-cyan to-neon-purple rounded-2xl opacity-0 group-hover:opacity-50 group-active:opacity-50 transition-opacity duration-300 -z-10 blur" />
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
 
           {/* Video + Details */}
@@ -224,6 +255,8 @@ const Gallery = () => {
                 src={selectedImage}
                 alt="Gallery image"
                 className="w-full h-full object-contain"
+                loading="eager"
+                fetchPriority="high"
               />
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 90 }}
