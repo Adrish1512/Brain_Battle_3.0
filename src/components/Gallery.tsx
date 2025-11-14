@@ -17,10 +17,15 @@ import imgIMG3 from '../../images/IMG_8288.JPG';
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const visibleImagesRef = useRef<Set<string>>(new Set());
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const imageRefs = useRef<(HTMLImageElement | null)[]>([]);
 
-  // Preload critical images (first 3 visible images)
+  // Aggressively preload all images in the background
   useEffect(() => {
+    const allImages = [img05, img03, img01, imgIMG2, img07, imgAGC, img08, imgIMG3, imgIMG1];
+    
+    // Preload critical images immediately
     const criticalImages = [img05, img03, img01];
     criticalImages.forEach((imgSrc) => {
       const img = new Image();
@@ -29,6 +34,63 @@ const Gallery = () => {
         setLoadedImages((prev) => new Set([...prev, imgSrc]));
       };
     });
+
+    // Preload remaining images with a slight delay to not block critical images
+    setTimeout(() => {
+      const remainingImages = allImages.filter(img => !criticalImages.includes(img));
+      remainingImages.forEach((imgSrc) => {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.as = 'image';
+        link.href = imgSrc;
+        document.head.appendChild(link);
+      });
+    }, 100);
+  }, []);
+
+  // Intersection Observer for smarter lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const img = entry.target as HTMLImageElement;
+            const imgSrc = img.src;
+            
+            if (!visibleImagesRef.current.has(imgSrc)) {
+              visibleImagesRef.current.add(imgSrc);
+              
+              // Force load if not already loading
+              if (!img.complete && img.src) {
+                const newImg = new Image();
+                newImg.src = imgSrc;
+                newImg.onload = () => {
+                  setLoadedImages((prevLoaded) => new Set([...prevLoaded, imgSrc]));
+                };
+              }
+            }
+          }
+        });
+      },
+      {
+        rootMargin: '300px', // Start loading 300px before entering viewport
+        threshold: 0.01,
+      }
+    );
+
+    // Observe images after a short delay to ensure refs are set
+    const timeoutId = setTimeout(() => {
+      imageRefs.current.forEach((img) => {
+        if (img) observer.observe(img);
+      });
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      imageRefs.current.forEach((img) => {
+        if (img) observer.unobserve(img);
+      });
+    };
   }, []);
 
   useEffect(() => {
@@ -148,11 +210,14 @@ const Gallery = () => {
                 >
                   <div className="relative overflow-hidden rounded-2xl cyber-border bg-black/50 aspect-[4/3]">
                     {!isLoaded && (
-                      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black animate-pulse flex items-center justify-center">
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black animate-pulse flex items-center justify-center z-10">
                         <div className="text-cyber-cyan text-xs font-tech">LOADING...</div>
                       </div>
                     )}
                     <img
+                      ref={(el) => {
+                        if (el) imageRefs.current[index] = el;
+                      }}
                       src={image.src}
                       alt={image.alt}
                       loading={isCritical ? "eager" : "lazy"}
@@ -161,9 +226,18 @@ const Gallery = () => {
                       onLoad={() => {
                         setLoadedImages((prev) => new Set([...prev, image.src]));
                       }}
+                      onError={() => {
+                        // Retry loading on error
+                        const img = new Image();
+                        img.src = image.src;
+                        img.onload = () => {
+                          setLoadedImages((prev) => new Set([...prev, image.src]));
+                        };
+                      }}
                       className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105 group-active:scale-105 ${
                         isLoaded ? 'opacity-100' : 'opacity-0'
                       }`}
+                      style={{ willChange: 'opacity' }}
                     />
                   
                   {/* Cyber Overlay */}
