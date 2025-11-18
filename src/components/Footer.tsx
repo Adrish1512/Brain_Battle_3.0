@@ -19,7 +19,7 @@ const Footer = () => {
 
   const contactInfo = [
     { icon: MapPin, text: 'UIT,BU Campus, Burdwan', status: 'LOCATED' },
-    { icon: Calendar, text: 'December 8 - 12, 2025', status: 'SCHEDULED' },
+    { icon: Calendar, text: 'December 13 - 18, 2025', status: 'SCHEDULED' },
     { icon: Phone, text: '+91  98325 05937', status: 'ACTIVE' },
     { icon: Mail, text: 'uit.coding.junction@gmail.com', status: 'ONLINE' },
   ];

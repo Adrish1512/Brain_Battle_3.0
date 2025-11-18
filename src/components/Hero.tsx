@@ -33,7 +33,7 @@ const Hero = () => {
 
   // Countdown timer effect
   useEffect(() => {
-    const targetDate = new Date('December 08, 2025 00:00:00').getTime();
+    const targetDate = new Date('December 13, 2025 10:00:00').getTime();
 
     const updateCountdown = () => {
       const now = new Date().getTime();
@@ -204,7 +204,7 @@ const Hero = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto"
           >
             {[
-              { icon: Calendar, text: 'DEC 8 - 12, 2025', color: 'text-cyber-cyan' },
+              { icon: Calendar, text: 'DEC 13 - 18, 2025', color: 'text-cyber-cyan' },
               { icon: MapPin, text: 'UIT,BU CAMPUS', color: 'text-neon-purple' },
               { icon: Users, text: '500+ HACKERS', color: 'text-neon-pink' },
               { icon: Trophy, text: '₹6K PRIZE', color: 'text-neon-green' },

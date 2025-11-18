@@ -66,7 +66,7 @@ const Event = () => {
               {
                 title: 'Online Coding Round',
                 desc: 'Test your coding skills in a fast-paced online challenge.',
-                date: 'Dec 8, 2025',
+                date: 'Dec 13, 2025',
                 status: 'Compiling',
                 icon: Code,
                 color: 'text-cyber-cyan',
@@ -76,7 +76,7 @@ const Event = () => {
               {
                 title: 'Tech Triad',
                 desc: 'A multi-domain challenge testing skills in Hardware, Software, and Logical Reasoning. Teams of three tackle questions from each domain under a 15-minute limit.',
-                date: 'Dec 9, 2025',
+                date: 'Dec 15, 2025',
                 status: 'Compiling',
                 icon: Cpu,
                 color: 'text-cyber-purple',
@@ -87,7 +87,7 @@ const Event = () => {
               {
                 title: 'Brain Brawl',
                 desc: 'Face off in a battle of wits and logic with other teams.',
-                date: 'Dec 10, 2025',
+                date: 'Dec 16, 2025',
                 status: 'Compiling',
                 icon: Brain,
                 color: 'text-neon-purple',
@@ -97,7 +97,7 @@ const Event = () => {
               {
                 title: 'Final Showdown - Hackathon',
                 desc: 'The ultimate hackathon: build, innovate, and impress the judges.',
-                date: 'Dec 11, 2025',
+                date: 'Dec 17, 2025',
                 status: 'Compiling',
                 icon: Lightbulb,
                 color: 'text-cyber-yellow',
@@ -107,7 +107,7 @@ const Event = () => {
               {
                 title: 'Award Ceremony',
                 desc: 'Celebrate the winners and all participants in style.',
-                date: 'Dec 12, 2025',
+                date: 'Dec 18, 2025',
                 status: 'Compiling',
                 icon: Trophy,
                 color: 'text-neon-pink',

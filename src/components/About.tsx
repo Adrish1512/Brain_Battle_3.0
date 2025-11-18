@@ -222,7 +222,7 @@ const About = () => {
                     </span>
                   </motion.a>
                   <div className="text-sm text-gray-400 font-tech">
-                    [EARLY_ACCESS_EXPIRES: DEC_01]
+                    [EARLY_ACCESS_EXPIRES: DEC_07]
                   </div>
                 </div>
               </div>
