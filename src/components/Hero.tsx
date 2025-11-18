@@ -305,7 +305,7 @@ const Hero = () => {
             {[
               { icon: Calendar, text: 'DEC 13 - 18, 2025', color: 'text-cyber-cyan' },
               { icon: MapPin, text: 'UIT,BU CAMPUS', color: 'text-neon-purple' },
-              { icon: Users, text: '2000+ HACKERS', color: 'text-neon-pink' },
+              { icon: Users, text: '500+ HACKERS', color: 'text-neon-pink' },
               { icon: Trophy, text: '₹6K PRIZE', color: 'text-neon-green' },
             ].map((item, index) => (
               <motion.div
