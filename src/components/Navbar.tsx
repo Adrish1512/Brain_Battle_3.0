@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
 import Logo from '../../Logo.png';
-import UnstopLogo from '../../unstop.png';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -83,21 +82,6 @@ const Navbar = () => {
 
   return (
     <>
-      <motion.div
-        initial={{ y: -40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, type: 'spring', bounce: 0.35 }}
-        className="fixed top-0 w-full z-[60] flex justify-end pointer-events-none"
-      >
-        <div className="w-[116px] mr-5 mt-0 flex flex-col items-center bg-white pt-4 pb-8 px-0 shadow-[0_2px_32px_10px_rgba(34,242,255,0.32),0_0_0_2px_rgba(34,242,255,0.18)] pointer-events-auto" style={{clipPath:'polygon(0 0, 100% 0, 100% 87%, 50% 100%, 0 87%)'}}>
-          <span className="w-full text-center text-[15px] font-orbitron font-extrabold tracking-wider uppercase mb-1" style={{color:'#1EC8FF'}}>POWERED BY</span>
-          <div className="flex items-center justify-center mt-0 mb-2">
-            <div className="rounded-full bg-white p-2 flex items-center justify-center" style={{boxShadow:'0 0 20px 4px #36fff955'}}>
-              <img src={UnstopLogo} alt="Powered by Unstop" className="h-11 w-11 rounded-full object-contain block"/>
-            </div>
-          </div>
-        </div>
-      </motion.div>
       <div className="scan-line"></div>
       <motion.nav
         initial={{ y: -100 }}

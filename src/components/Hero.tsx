@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, MapPin, Users, Trophy, ExternalLink, Cpu, Zap } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
+import UnstopLogo from '../../unstop-logo.svg';
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -53,7 +54,7 @@ const Hero = () => {
 
     // Update countdown immediately
     updateCountdown();
-    
+
     // Update countdown every second
     const timer = setInterval(updateCountdown, 1000);
 
@@ -84,6 +85,25 @@ const Hero = () => {
 
   return (
     <section id="home" className="relative min-h-screen lg:min-h-[125vh] flex items-center justify-center overflow-hidden pt-[80px] sm:pt-16 lg:pt-[130px]">
+      {/* Powered By Ribbon (Desktop only) */}
+      <div className="hidden md:flex absolute top-16 right-5 z-40 flex-col items-center" style={{width:'116px'}}>
+        <div className="w-full flex flex-col items-center bg-white pt-4 pb-8 px-0 shadow-[0_2px_32px_10px_rgba(34,242,255,0.32),0_0_0_2px_rgba(34,242,255,0.18)]" style={{clipPath:'polygon(0 0, 100% 0, 100% 87%, 50% 100%, 0 87%)'}}>
+          <span className="w-full text-center text-[15px] font-orbitron font-extrabold tracking-wider uppercase mb-1" style={{color:'#1EC8FF'}}>POWERED BY</span>
+          <div className="flex items-center justify-center mt-0 mb-2">
+            <a
+              href="https://unstop.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Open Unstop website"
+              title="Unstop"
+              className="rounded-full bg-white p-2 flex items-center justify-center"
+              style={{boxShadow:'0 0 20px 4px #36fff955'}}
+            >
+              <img src={UnstopLogo} alt="Powered by Unstop" className="h-16 w-16 rounded-full object-contain block"/>
+            </a>
+          </div>
+        </div>
+      </div>
       {/* Cyberpunk Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black via-purple-900/10 to-black">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(6,182,212,0.1),transparent_50%)]" />
@@ -109,22 +129,22 @@ const Hero = () => {
    {/* Floating Cyber Elements */}
 <div className="absolute inset-0 overflow-hidden">
   {[...Array(12)].map((_, i) => {
-    
-    const column = i % 4; 
-    const row = Math.floor(i / 4);  
-    
+
+    const column = i % 4;
+    const row = Math.floor(i / 4);
+
     return (
       <motion.div
         key={i}
         className="absolute text-cyber-cyan opacity-60 text-2xl"
-        style={{ 
-          left: `${15 + (column * 25)}%`,  
-          top: `${10 + (row * 25)}%`       
+        style={{
+          left: `${15 + (column * 25)}%`,
+          top: `${10 + (row * 25)}%`
         }}
         animate={{
           y: [-40, 40],
-          x: [-15, 15], 
-          rotate: [0, 360], 
+          x: [-15, 15],
+          rotate: [0, 360],
           scale: [0.9, 1.1, 0.9],
           opacity: [0.2, 0.5, 0.2]
         }}
@@ -166,21 +186,100 @@ const Hero = () => {
                 BRAIN BATTLE
               </motion.h1>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
               className="relative"
             >
-              <span className="text-4xl md:text-6xl font-orbitron font-black text-white animate-neon-pulse">
+              <motion.span
+                animate={floatingAnimation}
+                className="text-4xl md:text-6xl font-orbitron font-black text-white animate-neon-pulse"
+              >
                 3.0
-              </span>
+              </motion.span>
               {/* Background Glow Effect */}
               <div className="absolute -inset-4 bg-gradient-to-r from-cyber-cyan/10 via-neon-purple/10 to-neon-pink/10 blur-lg animate-pulse" />
             </motion.div>
           </div>
 
+        {/* Mobile: Powered by Unstop - Scroll Holder White Banner */}
+<div className="md:hidden mt-6 flex justify-center">
+  <div
+    className="relative inline-flex items-center gap-3 px-8 py-3
+                bg-gradient-to-r from-white via-[#f9feff] to-[#ecfcff]
+                border border-[#aaf4ff]/40
+                shadow-[0_0_25px_6px_rgba(34,242,255,0.35)]
+                overflow-visible"
+    style={{
+      clipPath:
+        "polygon(0 0, 93% 0, 100% 50%, 93% 100%, 0 100%)",
+      borderTopLeftRadius: "10px",
+      borderBottomLeftRadius: "10px",
+    }}
+  >
+    {/* Golden Scroll Rod - FAT & SOLID 3D effect */}
+    <div
+      className="absolute -left-3 top-1/2 -translate-y-1/2 h-[140%] w-[24px] // Fatter rod
+                 rounded-full
+                 bg-gradient-to-b from-[#fff0a8] via-[#ffd700] to-[#daa520] // Brighter gold
+                 shadow-[inset_3px_0_6px_rgba(255,255,255,0.7),
+                         inset_-3px_0_8px_rgba(120,60,0,0.6),
+                         0_0_12px_rgba(255,215,0,0.8),
+                         0_0_20px_rgba(255,195,0,0.4)] // Stronger shadows
+                 border border-[#ffd700]" 
+    />
+
+    {/* Decorative end knob - FAT & SOLID */}
+    <div
+      className="absolute -left-4 top-1/2 -translate-y-1/2 h-[28px] w-[28px] // Larger knob
+                 bg-gradient-to-b from-[#ffeb3b] via-[#ffc107] to-[#ff8c00] // Brighter gradient
+                 rounded-full
+                 shadow-[inset_0_0_8px_rgba(0,0,0,0.5),
+                         0_0_12px_rgba(255,193,7,0.7),
+                         0_0_20px_rgba(255,152,0,0.4)]
+                 border border-[#ffc107]" // Added border
+    />
+
+    {/* Inner metallic line in knob - THICKER */}
+    <div
+      className="absolute -left-[6px] top-1/2 -translate-y-1/2 h-[22px] w-[4px] // Thicker line
+                 bg-gradient-to-b from-[#fffde7] to-[#ffd54f] // Brighter metallic
+                 rounded-full
+                 shadow-[inset_0_0_4px_rgba(255,255,255,0.8),
+                         inset_0_0_6px_rgba(255,193,7,0.9)]" // Stronger inner glow
+    />
+
+    {/* Banner Text */}
+    <span
+      className="text-[10px] font-orbitron font-extrabold tracking-widest uppercase"
+      style={{
+        color: "#00baff",
+        textShadow: "0 0 8px rgba(0,186,255,0.45)",
+      }}
+    >
+      POWERED BY
+    </span>
+
+    {/* Unstop Logo */}
+    <a
+      href="https://unstop.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Open Unstop website"
+      title="Unstop"
+      className="rounded-full bg-white p-1.5 flex items-center justify-center
+                 shadow-[0_0_10px_2px_rgba(0,186,255,0.25)] border border-[#c5ffff]/50"
+    >
+      <img
+        src={UnstopLogo}
+        alt="Unstop"
+        className="h-7 w-7 rounded-full object-contain"
+      />
+    </a>
+  </div>
+</div>
           {/* Cyberpunk Tagline */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -206,7 +305,7 @@ const Hero = () => {
             {[
               { icon: Calendar, text: 'DEC 13 - 18, 2025', color: 'text-cyber-cyan' },
               { icon: MapPin, text: 'UIT,BU CAMPUS', color: 'text-neon-purple' },
-              { icon: Users, text: '500+ HACKERS', color: 'text-neon-pink' },
+              { icon: Users, text: '2000+ HACKERS', color: 'text-neon-pink' },
               { icon: Trophy, text: '₹6K PRIZE', color: 'text-neon-green' },
             ].map((item, index) => (
               <motion.div
@@ -229,10 +328,10 @@ const Hero = () => {
           >
             <motion.a
               ref={ctaRef}
-              href="https://forms.gle/example"
+              href="https://unstop.com/p/brain-battle-season-3-coding-junction-1593250"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
               }}
               whileTap={{ scale: 0.95 }}
@@ -252,8 +351,8 @@ const Hero = () => {
             transition={{ delay: 1.5, duration: 0.8 }}
             className="pt-16 sm:pt-20 md:pt-24"
           >
-            <motion.div 
-              whileHover={{ 
+            <motion.div
+              whileHover={{
                 scale: 1.02,
                 y: -2,
                 transition: { duration: 0.2 }
@@ -270,10 +369,10 @@ const Hero = () => {
                   { value: countdown.minutes.toString().padStart(2, '0'), label: 'MIN' },
                   { value: countdown.seconds.toString().padStart(2, '0'), label: 'SEC' },
                 ].map((unit) => (
-                  <motion.div 
-                    key={unit.label} 
+                  <motion.div
+                    key={unit.label}
                     className="space-y-1 sm:space-y-2"
-                    whileHover={{ 
+                    whileHover={{
                       scale: 1.05,
                       transition: { duration: 0.2 }
                     }}

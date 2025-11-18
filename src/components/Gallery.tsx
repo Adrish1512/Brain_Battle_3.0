@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ExternalLink, Eye } from 'lucide-react';
+import { X, Eye } from 'lucide-react';
 import VanillaTilt from 'vanilla-tilt';
 
 // Import images properly for Vite
@@ -16,7 +16,52 @@ import imgIMG3 from '../../images/IMG_8288.JPG';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // ULTRA-AGGRESSIVE: Load ALL images immediately in parallel with highest priority
+  useEffect(() => {
+    const allImages = [img05, img03, img01, imgIMG2, img07, imgAGC, img08, imgIMG3, imgIMG1];
+    
+    // Load ALL images immediately in parallel - no delays, no lazy loading
+    // Using Promise.all for maximum parallelization
+    const loadPromises = allImages.map((imgSrc) => {
+      return new Promise<void>((resolve) => {
+        // Use preload link for highest priority
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = imgSrc;
+        (link as any).fetchPriority = 'high';
+        document.head.appendChild(link);
+        
+        // Also create Image object for immediate loading
+        const img = new Image();
+        img.src = imgSrc;
+        (img as any).loading = 'eager';
+        (img as any).fetchPriority = 'high';
+        img.onload = () => {
+          setLoadedImages((prev) => new Set([...prev, imgSrc]));
+          resolve();
+        };
+        img.onerror = () => {
+          // Retry on error
+          const retryImg = new Image();
+          retryImg.src = imgSrc;
+          retryImg.onload = () => {
+            setLoadedImages((prev) => new Set([...prev, imgSrc]));
+            resolve();
+          };
+          retryImg.onerror = () => resolve(); // Resolve anyway to not block
+        };
+      });
+    });
+    
+    // Start all loads in parallel
+    Promise.all(loadPromises).catch(() => {
+      // Ignore errors, images will load individually
+    });
+  }, []);
 
   useEffect(() => {
     cardRefs.current.forEach((card) => {
@@ -123,18 +168,45 @@ const Gallery = () => {
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className="group relative cursor-pointer"
-                onClick={() => setSelectedImage(image.src)}
-              >
-                <div className="relative overflow-hidden rounded-2xl cyber-border bg-black/50 aspect-[4/3]">
-                  <img
-                    src={image.src}
-                    alt={image.alt}
-                    className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105 group-active:scale-105"
-                  />
+            {images.map((image, index) => {
+              const isLoaded = loadedImages.has(image.src);
+              
+              return (
+                <div
+                  key={index}
+                  className="group relative cursor-pointer"
+                  onClick={() => setSelectedImage(image.src)}
+                >
+                  <div className="relative overflow-hidden rounded-2xl cyber-border bg-black/50 aspect-[4/3]">
+                    {!isLoaded && (
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 to-black animate-pulse flex items-center justify-center z-10">
+                        <div className="text-cyber-cyan text-xs font-tech">LOADING...</div>
+                      </div>
+                    )}
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      loading="eager"
+                      decoding="async"
+                      fetchPriority="high"
+                      onLoad={() => {
+                        setLoadedImages((prev) => new Set([...prev, image.src]));
+                      }}
+                      onError={() => {
+                        // Retry loading on error
+                        const img = new Image();
+                        img.src = image.src;
+                        img.loading = 'eager';
+                        img.fetchPriority = 'high';
+                        img.onload = () => {
+                          setLoadedImages((prev) => new Set([...prev, image.src]));
+                        };
+                      }}
+                      className={`w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-105 group-active:scale-105 ${
+                        isLoaded ? 'opacity-100' : 'opacity-0'
+                      }`}
+                      style={{ willChange: 'opacity' }}
+                    />
                   
                   {/* Cyber Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-300">
@@ -162,30 +234,43 @@ const Gallery = () => {
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-cyber-cyan to-neon-purple rounded-2xl opacity-0 group-hover:opacity-50 group-active:opacity-50 transition-opacity duration-300 -z-10 blur" />
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
 
-          {/* Call to Action */}
-          <div className="text-center pt-8 sm:pt-12">
-            <div className="cyber-border rounded-2xl p-4 sm:p-8 max-w-2xl mx-auto bg-black/50 backdrop-blur-sm">
-              <h3 className="text-xl sm:text-2xl font-orbitron font-bold text-white mb-4">
-                &gt; VIEW PAST SEASONS
+          {/* Video + Details */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+            {/* Left: Video */}
+            <div className="cyber-border rounded-2xl overflow-hidden bg-black/50 backdrop-blur-sm">
+              <div className="relative w-full pt-[56.25%]">
+                <iframe
+                  src="https://www.youtube.com/embed/ey-vdvy2Xe8?si=JDOxcShMlSKcDn5l"
+                  title="Brain Battle Video"
+                  className="absolute inset-0 w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
+
+            {/* Right: Title + Description */}
+            <div className="cyber-border rounded-2xl p-4 sm:p-6 bg-black/50 backdrop-blur-sm space-y-4">
+              <h3 className="text-2xl sm:text-3xl font-orbitron font-bold">
+                Brain Battle 2.0 - After Movie
               </h3>
-              <p className="text-sm sm:text-base text-gray-300 mb-6 font-tech">
-                &gt; Explore highlights, projects, and winners from previous Brain Battle seasons. 
-                Relive the moments and get inspired for what's next.
-              </p>
-              <a
-                href="https://forms.gle/example"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 bg-gradient-to-r from-cyber-cyan via-neon-purple to-neon-pink p-0.5 rounded-full font-orbitron font-bold group"
-              >
-                <span className="bg-black px-2 py-1 sm:px-4 sm:py-2 rounded-full text-white group-hover:bg-transparent transition-all duration-300 flex items-center gap-1 sm:gap-2 text-xs sm:text-sm">
-                  &gt; VIEW_PAST_SEASONS
-                  <ExternalLink className="h-3 w-3 sm:h-4 sm:w-4" />
-                </span>
-              </a>
+              <div className="text-sm sm:text-base text-gray-300 font-tech leading-relaxed">
+                <p>&gt; Ideas sparked. Minds collided.</p>
+
+                <p className="mt-4">
+                  Magic happened. This wasn’t just a hackathon — it was a journey of energy, teamwork, and raw creation.
+                  Every frame carries a story, every face a spark, every cheer a memory worth reliving.
+                </p>
+
+                <p className="mt-4">
+                  Here’s the aftermovie — a celebration of passion, innovation, and the people who made it unforgettable.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -212,6 +297,8 @@ const Gallery = () => {
                 src={selectedImage}
                 alt="Gallery image"
                 className="w-full h-full object-contain"
+                loading="eager"
+                fetchPriority="high"
               />
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 90 }}

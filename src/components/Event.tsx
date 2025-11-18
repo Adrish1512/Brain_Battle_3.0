@@ -76,7 +76,7 @@ const Event = () => {
               {
                 title: 'Tech Triad',
                 desc: 'A multi-domain challenge testing skills in Hardware, Software, and Logical Reasoning. Teams of three tackle questions from each domain under a 15-minute limit.',
-                date: 'Dec 15, 2025',
+                date: 'Dec 9, 2025',
                 status: 'Compiling',
                 icon: Cpu,
                 color: 'text-cyber-purple',

@@ -209,7 +209,7 @@ const About = () => {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                   <motion.a
-                    href="https://forms.gle/example"
+                    href="https://unstop.com/p/brain-battle-season-3-coding-junction-1593250"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.05 }}
