@@ -6,6 +6,7 @@ import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 import Event from './components/Event';
 import LoadingScreen from './components/LoadingScreen';
+import TopTeams from './components/TopTeams';
 
 // Preload gallery images as early as possible - even before Gallery component loads
 // Using static imports for better Vite optimization and immediate loading
@@ -73,6 +74,7 @@ function App() {
                 <Event />
               </Suspense>
               <About />
+              <TopTeams />
               <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
                 <Gallery />
               </Suspense>
