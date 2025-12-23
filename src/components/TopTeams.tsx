@@ -36,7 +36,7 @@ const TopTeams = () => {
   const topTeams = [
     {
       rank: 1,
-      name: 'TEAM ?',
+      name: 'Binary Breakers',
       icon: Trophy,
       color: 'text-cyber-yellow',
       bgColor: 'bg-cyber-yellow/10',
@@ -45,7 +45,7 @@ const TopTeams = () => {
     },
     {
       rank: 2,
-      name: 'TEAM ?',
+      name: 'Binary Echoes',
       icon: Medal,
       color: 'text-gray-300',
       bgColor: 'bg-gray-300/10',
@@ -54,7 +54,7 @@ const TopTeams = () => {
     },
     {
       rank: 3,
-      name: 'TEAM ?',
+      name: 'Tech Wave',
       icon: Award,
       color: 'text-cyber-cyan',
       bgColor: 'bg-cyber-cyan/10',
